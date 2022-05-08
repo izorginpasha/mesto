@@ -1,0 +1,9 @@
+.header{
+    max-width: 100%;
+    min-height: 74px;
+    padding: 45px 200px 40px 200px;
+    position: relative;
+    display: grid;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
