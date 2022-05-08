@@ -1,0 +1,5 @@
+.profile-info__conteiner{
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+}

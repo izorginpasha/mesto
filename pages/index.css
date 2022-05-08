@@ -5,3 +5,12 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
+@import url(../blocks/content/content.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/avatar/avatar.css);
+@import url(../blocks/profile-info/profile-info.css);
+@import url(../blocks/profile-info/__conteiner/profile-info__conteiner.css);
+@import url(../blocks/profile-info/__fio/profile-info__fio.css);
+@import url(../blocks/profile-info/__hobby/profile-info__hobby.css);
+@import url(../blocks/profile-info/__edit-buuton/profile-info__edit-button.css);
+@import url(../blocks/add-button/add-button.css);

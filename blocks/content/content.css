@@ -1,0 +1,8 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 51px;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0px 200px;
+}
