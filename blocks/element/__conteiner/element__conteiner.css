@@ -1,0 +1,10 @@
+.element__conteiner{
+    list-style-type: none;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 282px);;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px 17px;
+    padding: 0px;
+    margin: 0px;
+}

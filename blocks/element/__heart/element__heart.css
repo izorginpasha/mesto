@@ -1,0 +1,16 @@
+.element__heart{
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/Vector3.svg);
+    background-size: 22px 19px;
+    margin-right: 5px;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+}
+.element__heart:active{
+    background-image: url(../../../images/Union.svg);
+
+}
+.element__heart:hover{
+    opacity: 0.5; 
+}

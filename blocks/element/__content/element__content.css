@@ -1,0 +1,8 @@
+.element__content{
+    overflow: hidden;
+    padding: 25px 15px 31px 21px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    
+}
