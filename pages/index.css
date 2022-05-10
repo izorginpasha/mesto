@@ -24,8 +24,10 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
 @import url(../blocks/popap/popap.css);
-@import url(../blocks/popap/__conteiner/popap__contener.css);
+@import url(../blocks/popap/__conteiner/popap__conteiner.css);
 @import url(../blocks/popap/__title/popap__title.css);
+@import url(../blocks/popap/__fio/popap__fio.css);
 @import url(../blocks/popap/__hobby/popap__hobby.css);
 @import url(../blocks/popap/__button/popap__button.css);
 @import url(../blocks/popap/__button-title/popap__button-title.css);
+@import url(../blocks/popap/__line/popap__line.css);
