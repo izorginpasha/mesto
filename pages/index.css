@@ -23,3 +23,9 @@
 @import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
+@import url(../blocks/popap/popap.css);
+@import url(../blocks/popap/__conteiner/popap__contener.css);
+@import url(../blocks/popap/__title/popap__title.css);
+@import url(../blocks/popap/__hobby/popap__hobby.css);
+@import url(../blocks/popap/__button/popap__button.css);
+@import url(../blocks/popap/__button-title/popap__button-title.css);
