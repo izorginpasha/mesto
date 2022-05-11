@@ -13,4 +13,4 @@ HTML,CSS,js
 Фаиловая структура по БЭМ.
 
 ## Фото проекта
-![image] (https://github.com/izorginpasha/russian-travel/blob/main/images/__image%20(1).png)
+![image] (https://github.com/izorginpasha/mesto/blob/main/images/Гора-Эльбрус.jpg)
