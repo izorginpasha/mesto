@@ -9,3 +9,9 @@
     margin: 0;
     padding: 0;
 }
+@media screen and (max-width: 768px){
+    .popap__button-title{
+        font-size:14px;
+        line-height:17px;
+}
+}

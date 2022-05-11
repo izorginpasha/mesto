@@ -18,11 +18,11 @@
             <div class="profile-info" >
                 <div class="profile-info__conteiner">
                     <p class="profile-info__fio">Жак-Ив Кусто</p>
-                    <button class="profile-info__edit-button"></button>
+                    <button class="profile-info__edit-button" type="button"></button>
                 </div>
                 <p class="profile-info__hobby">Исследователь океана</p>     
             </div>
-            <div class="add-button"></div>
+            <button class="add-button" type="submit"></button>
         </section>
         <section class="element">
             <ul class="element__conteiner">
@@ -76,13 +76,14 @@
     </footer>
     </div>
     <div class="popap">
-        <div class="popap__close"></div>
-        <div class="popap__conteiner">
+        <button class="popap__close" class="button"></button>
+        <form class="popap__conteiner">
             <p class="popap__title">Редактировать профиль</p>
             <input class="popap__fio" type="text" value="Фёдор Конюхов">
             <input class="popap__hobby" type="text" value="Путешественник">
-            <button class="popap__button"><p class="popap__button-title">Сохранить</p></button>
-        </div>
+            <button class="popap__button" class="input"><p class="popap__button-title">Сохранить</p></button>
+        </form>
     </div>
+    <script src="pages/script.js"></script>
 </body>
 </html>

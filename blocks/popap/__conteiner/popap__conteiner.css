@@ -12,4 +12,11 @@
     align-content: space-between;
     border-radius: 10px;
 }
-
+@media screen and (max-width: 768px){
+    .popap__conteiner{
+        width: 282px;
+        height: 322px;
+        margin: -161px 0 0 -141px;
+        padding: 25px 22px 25px 22px;
+    }
+}
