@@ -5,8 +5,3 @@
     object-fit: cover;
     border-radius: 10px 10px 0px 0px;
 }
-@media screen and (max-width: 768px){
-    .element__image{
-        height: 100%;
-}
-}
