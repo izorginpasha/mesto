@@ -13,3 +13,6 @@
     background-size: 22px 22px;
 
 }
+.add-button:hover{
+    opacity: 0.6;
+}
