@@ -4,11 +4,17 @@
     border: 1px solid #FFFFFF;
     background-color: #000000;
     background-image: url(../../../images/Vector.svg);
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 10px 10px;
     margin-right: 10px;
+    font-family:'Inter';
+    font-style:normal;
+    font-weight:400;
+    font-size:18px;
+    line-height:22px;
+    text-align:center;
+    color:#FFFFFF;
 }
 .profile-info__edit-button:hover{
     opacity: 0.6;
@@ -16,6 +22,8 @@
 @media screen and (max-width: 650px){
     .profile-info__edit-button{
         margin-right: 0px;
+        font-size:14px;
+        line-height:17px;
     }
 }
 @media screen and (max-width: 320px){
