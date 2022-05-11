@@ -11,8 +11,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 22px 22px;
-
 }
 .add-button:hover{
     opacity: 0.6;
+}
+@media screen and (max-width: 650px){
+    .add-button{
+       margin: 0;
+}
+}
+@media screen and (max-width: 400px){
+    .add-button{
+        width: 100%;
+}
 }

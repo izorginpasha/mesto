@@ -8,3 +8,15 @@
     padding: 0px;
     margin: 0px;
 }
+@media screen and (max-width: 650px){
+    .footer__title{
+        margin-left: 25px;
+    }
+}
+@media screen and (max-width: 400px){
+    .footer__title{
+        margin-left: 0px;
+        font-size:14px;
+        line-height:17px;
+    }
+}
