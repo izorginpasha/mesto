@@ -16,7 +16,7 @@ function formSubmitHandler (evt) {
     let fioValue = nameInput.value;
     let hobbyValue = jobInput.value;
     let fio = document.querySelector('.profile-info__fio');
-    let hobby = document.querySelector('.profile-info__edit-button');
+    let hobby = document.querySelector('.profile-info__hobby');
     fio.textContent= fioValue;
     hobby.textContent = hobbyValue;
     closePopap();
