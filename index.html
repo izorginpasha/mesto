@@ -17,7 +17,7 @@
             <img class="avatar" src="images/image.jpg" alt="Фото профиля">
             <div class="profile-info" >
                 <div class="profile-info__conteiner">
-                    <p class="profile-info__fio">Жак-Ив Кусто</p>
+                    <h1 class="profile-info__fio">Жак-Ив Кусто</h1>
                     <button class="profile-info__edit-button" type="button"></button>
                 </div>
                 <p class="profile-info__hobby">Исследователь океана</p>     
@@ -70,19 +70,19 @@
                 </li>
             </ul>
         </section>
+        <section class="popap">
+            <button class="popap__close" type="button"></button>
+            <form class="popap__conteiner">
+                <p class="popap__title">Редактировать профиль</p>
+                <input class="popap__fio" type="text" value="Жак-Ив Кусто">
+                <input class="popap__hobby" type="text" value="Исследователь океана">
+                <button class="popap__button" type="submit"><span class="popap__button-title">Сохранить</span></button>
+            </form>
+        </section>
     </main>
     <footer class="footer">
         <p class="footer__title">© 2020 Mesto Russia</p>
     </footer>
-    </div>
-    <div class="popap">
-        <button class="popap__close" type="button"></button>
-        <form class="popap__conteiner">
-            <p class="popap__title">Редактировать профиль</p>
-            <input class="popap__fio" type="text" value="Жак-Ив Кусто">
-            <input class="popap__hobby" type="text" value="Исследователь океана">
-            <button class="popap__button" type="submit"><span class="popap__button-title">Сохранить</span></button>
-        </form>
     </div>
     <script src="pages/script.js"></script>
 </body>
