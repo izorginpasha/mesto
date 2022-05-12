@@ -1,10 +1,10 @@
-.profile-info__conteiner{
+.profile__conteiner{
     display: flex;
     gap: 18px;
     align-items: baseline;
 }
 @media screen and (max-width: 650px){
-    .profile-info__conteiner{
+    .profile__conteiner{
         gap: 10px;
     }
 }

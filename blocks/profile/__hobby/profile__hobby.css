@@ -1,4 +1,4 @@
-.profile-info__hobby{
+.profile__hobby{
 font-family:'Inter';
 font-style:normal;
 font-weight:400;
@@ -6,10 +6,9 @@ font-size:18px;
 line-height:22px;
 color:#FFFFFF;
 margin: 0px;
-text-align: center;
 }
 @media screen and (max-width: 400px){
-    .profile-info__hobby{
+    .profile__hobby{
         font-size:14px;
         line-height:17px;
         text-align: center;

@@ -1,5 +1,5 @@
 let popap = document.querySelector('.popap');
-let editButton = document.querySelector('.profile-info__edit-button');
+let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popap__close');
 let formElement =document.querySelector('.popap');
 
@@ -15,8 +15,8 @@ function formSubmitHandler (evt) {
     let jobInput = formElement.querySelector('.popap__hobby');
     let fioValue = nameInput.value;
     let hobbyValue = jobInput.value;
-    let fio = document.querySelector('.profile-info__fio');
-    let hobby = document.querySelector('.profile-info__hobby');
+    let fio = document.querySelector('.profile__fio');
+    let hobby = document.querySelector('.profile__hobby');
     fio.textContent= fioValue;
     hobby.textContent = hobbyValue;
     closePopap();

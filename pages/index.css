@@ -7,13 +7,13 @@
 @import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/avatar/avatar.css);
-@import url(../blocks/profile-info/profile-info.css);
-@import url(../blocks/profile-info/__conteiner/profile-info__conteiner.css);
-@import url(../blocks/profile-info/__fio/profile-info__fio.css);
-@import url(../blocks/profile-info/__hobby/profile-info__hobby.css);
-@import url(../blocks/profile-info/__edit-buuton/profile-info__edit-button.css);
-@import url(../blocks/add-button/add-button.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__conteiner/profile__conteiner.css);
+@import url(../blocks/profile/__fio/profile__fio.css);
+@import url(../blocks/profile/__hobby/profile__hobby.css);
+@import url(../blocks/profile/__edit-buuton/profile__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__item/element__item.css);
 @import url(../blocks/element/__image/element__image.css);
@@ -32,3 +32,4 @@
 @import url(../blocks/popap/__button-title/popap__button-title.css);
 @import url(../blocks/popap/__close/popap__close.css);
 @import url(../blocks/popap/_opened/popap_opened.css);
+@import url(../blocks/popap/__form/popap__form.css);

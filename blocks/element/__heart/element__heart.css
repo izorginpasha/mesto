@@ -6,6 +6,8 @@
     margin-right: 5px;
     margin-top: 5px;
     background-repeat: no-repeat;
+    border-style: none;
+    cursor: pointer;
 }
 .element__heart:active{
     background-image: url(../../../images/Union.svg);

@@ -1,4 +1,4 @@
-.profile-info__fio{
+.profile__fio{
     font-family:'Inter';
     font-style:normal;
     font-weight:500;
@@ -7,9 +7,12 @@
     color:#FFFFFF;
     margin: 0px;
     padding: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 @media screen and (max-width: 400px){
-    .profile-info__fio{
+    .profile__fio{
         font-size:27px;
         line-height:33px;
         text-align: center;

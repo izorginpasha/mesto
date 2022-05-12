@@ -1,6 +1,8 @@
 .popap__button{
     height: 50px;
     background-color: #000000;
+    border-style: none;
+    cursor: pointer;
 }
 .popap__button:hover{
     opacity: 0.8;

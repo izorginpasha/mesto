@@ -3,16 +3,15 @@
     height: 32px;
     box-sizing: border-box;
     position: absolute;
-    top:50%;
-    left: 50%;
-    margin: -205px 0 0 223px;
+    top: -40px;;
+    right: -40px;
     background-image: url(../../../images/Close-Icon.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #000000;
     border-style: none;
-
+    cursor: pointer;
 }
 .popap__close:hover{
     opacity: 0.6;
@@ -21,6 +20,7 @@
     .popap__close{
         width: 20px;
         height: 20px;
-        margin: -197px 0 0 121px;
+        top: -36px;
+        right: 0px;
     }
 }
