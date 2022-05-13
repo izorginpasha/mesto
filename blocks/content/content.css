@@ -3,7 +3,6 @@
     flex-direction: column;
     gap: 51px;
     box-sizing: border-box;
-    position: relative;
     max-width: 880px;
     margin: 0 auto;
 }
