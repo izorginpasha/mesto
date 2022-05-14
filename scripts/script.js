@@ -14,7 +14,7 @@ function openPopap(){           //функция открытия всплыва
 function closePopap(){ // функция закрытия всплывающего елемента
     formElement.classList.remove('popap_opened');
 }
-function formSubmitHandler (evt) { // функция обрабочик кнопки сохранить
+function savePopap (evt) { // функция обрабочик кнопки сохранить
     evt.preventDefault();
     fio.textContent= fioValue.value;
     hobby.textContent = hobbyValue.value;
@@ -23,4 +23,4 @@ function formSubmitHandler (evt) { // функция обрабочик кноп
 
 editButton.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля
 closeButton.addEventListener('click',closePopap); // слушатель кнопки закрытия окна редактирования
-formElement.querySelector('.popap__form').addEventListener('submit', formSubmitHandler);  // слушатель кнопки сохранить у окна редактирования профиля
+formElement.querySelector('.popap__form').addEventListener('submit', savePopap);  // слушатель кнопки сохранить у окна редактирования профиля
