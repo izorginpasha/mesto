@@ -1,11 +1,18 @@
 .popap__button{
+    width: 358px;
     height: 50px;
     background-color: #000000;
     border-style: none;
     cursor: pointer;
-    margin: 48px 0 0 0;
+    margin: 31px 0 0 0;
     border-radius: 2px;
 }
 .popap__button:hover{
     opacity: 0.8;
+}
+@media screen and (max-width: 768px){
+    .popap__button{
+        width: 238px;
+        margin: 28px 0 0 0;
+    }
 }

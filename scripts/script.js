@@ -1,8 +1,8 @@
 let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popap__close');
 let formElement =document.querySelector('.popap');
-let fioValue = formElement.querySelector('.popap__fio');
-let hobbyValue = formElement.querySelector('.popap__hobby');
+let fioValue = document.getElementById('popapFio');
+let hobbyValue = document.getElementById('popapHobby');
 let fio = document.querySelector('.profile__fio');
 let hobby = document.querySelector('.profile__hobby');
 
