@@ -1,4 +1,4 @@
-.element__heart{
+.element-item__heart{
     width: 22px;
     height: 19px;
     background-image: url(../../../images/Vector3.svg);
@@ -9,10 +9,10 @@
     border-style: none;
     cursor: pointer;
 }
-.element__heart:active{
+.element-item__heart:active{
     background-image: url(../../../images/Union.svg);
 
 }
-.element__heart:hover{
+.element-item__heart:hover{
     opacity: 0.5; 
 }
