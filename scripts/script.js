@@ -5,6 +5,7 @@ let fioValue = document.getElementById('popapFio');
 let hobbyValue = document.getElementById('popapHobby');
 let fio = document.querySelector('.profile__fio');
 let hobby = document.querySelector('.profile__hobby');
+let form = document.querySelector('.popap__form');
 
 function openPopap(){           //функция открытия всплывающего блока
     formElement.classList.add('popap_opened');
@@ -23,4 +24,4 @@ function savePopap (evt) { // функция обрабочик кнопки с�
 
 editButton.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля
 closeButton.addEventListener('click',closePopap); // слушатель кнопки закрытия окна редактирования
-formElement.querySelector('.popap__form').addEventListener('submit', savePopap);  // слушатель кнопки сохранить у окна редактирования профиля
+form.addEventListener('submit', savePopap);  // слушатель кнопки сохранить у окна редактирования профиля

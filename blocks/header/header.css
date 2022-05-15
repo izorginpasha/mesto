@@ -19,11 +19,6 @@
         padding: 28px 20px 0px 20px;
     }
 }
-@media screen and (max-width: 650px){
-    .header{
-        padding: 28px 20px 0px 20px;
-    }
-}
 @media screen and (max-width: 400px){
     .header{
         padding: 28px 0px 0px 0px;
