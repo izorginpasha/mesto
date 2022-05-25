@@ -11,6 +11,7 @@
 }
 .element-item__heart:active{
     background-image: url(../../../images/Union.svg);
+    
 
 }
 .element-item__heart:hover{

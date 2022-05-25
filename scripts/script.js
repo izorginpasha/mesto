@@ -45,6 +45,8 @@ function renderItem(item){// создание карточки
   ElementItem.querySelector('.element-item__image').src = item.link;
   ElementItem.querySelector('.element-item__image').alt =item.name;
   ElementItem.querySelector('.element-item__title').textContent = item.name;
+  const heart = ElementItem.querySelector('.element-item__heart');
+  heart.addEventListener('click',()=>{heart.style.background ="url(./images/Union.svg)";} );
   elementConteiner.append(ElementItem);
 }
 
