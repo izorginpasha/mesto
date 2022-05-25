@@ -32,7 +32,7 @@ const fioValue = document.getElementById('popapFio');
 const hobbyValue = document.getElementById('popapHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
-const form = document.querySelector('.popap__form');
+let form = null;
 const cardsTemplate = document.querySelector('#cards').content; // заготовка верстки cards
 const elementConteiner =  document.querySelector('.element__conteiner');// получаем контеинер для вставки заготовки
 
@@ -53,37 +53,42 @@ function proverca(item){
 }
 
 
-function openPopap(event){           //функция открытия всплывающего блока
+function openPopap(event){  //функция открытия всплывающего блока
   proverca(event.target.classList.value);
   if (event.target.classList.value==='profile__edit-button'){
     formElement = document.querySelector('#popapProfile');
-    proverca(formElement);
     fioValue.value=fio.textContent;
     hobbyValue.value=hobby.textContent;
-    closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
-    addButton.addEventListener('click',openPopap);
-  }else{if(event.target.classList.value==='profile__add-button'){
+    } else {
+      if(event.target.classList.value==='profile__add-button'){
     formElement = document.querySelector('#popapNewMesto');
-    proverca(formElement);
-    closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);;
-  }} // слушатель кнопки закрытия окна редактирования
-  addButton.addEventListener('click',openPopap);
-  formElement.classList.add('popap_opened');
-  
-  
-  
+      }
+    }
+    closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
+    form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
+    formElement.classList.add('popap_opened');
 }
 function closePopap(){ // функция закрытия всплывающего елемента
-  proverca(formElement);
   formElement.classList.remove('popap_opened');
-  proverca(formElement);
 }
-function savePopap (evt) { // функция обрабочик кнопки сохранить
-    evt.preventDefault();
-    fio.textContent= fioValue.value;
-    hobby.textContent = hobbyValue.value;
-    closePopap();
+function savePopap (evnt) { // функция обрабочик кнопки сохранить
+    evnt.preventDefault();
+    if(evnt.target.id==="popapFormProfile"){
+      fio.textContent= fioValue.value;
+      hobby.textContent = hobbyValue.value;
+      closePopap();
+    } else { 
+      if(evnt.target.id==="popapFormNewMesto"){
+        let a = {
+          name:  document.getElementById('popapName').value,
+          link: document.getElementById('popapLink').value
+        }
+        renderItem(a);
+        closePopap();
+      }
+    }
 }
 renderList(initialCards);
+addButton.addEventListener('click',openPopap);
 editButton.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля 
-form.addEventListener('submit', savePopap);  // слушатель кнопки сохранить у окна редактирования профиля
+  
