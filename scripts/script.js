@@ -53,19 +53,14 @@ function renderItem(item){// создание карточки
   image.addEventListener('click',openPopapImage);
   elementConteiner.append(ElementItem);
 }
-function openPopapImage(evnt){
+function openPopapImage(evnt){ //функция открытия всплывающего блока картинки
   formElement = document.querySelector('#popapImage');
   closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
   formElement.classList.add('popap_opened');
   formElement.querySelector('.popap__image').src =evnt.target.src;
+  formElement.querySelector('.popap__image-title').textContent =evnt.target.alt;
 }
-function proverca(item){
-  console.log(item);
-}
-
-
 function openPopap(event){  //функция открытия всплывающего блока
-  proverca(event.target.classList.value);
   if (event.target.classList.value==='profile__edit-button'){
     formElement = document.querySelector('#popapProfile');
     fioValue.value=fio.textContent;
@@ -75,13 +70,16 @@ function openPopap(event){  //функция открытия всплывающ
     formElement = document.querySelector('#popapNewMesto');
       }
     }
-    closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
+    closeButton = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
     form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
     formElement.classList.add('popap_opened');
 }
 function closePopap(){ // функция закрытия всплывающего елемента
-  formElement.classList.remove('popap_opened');
+    setTimeout(()=>{formElement.classList.remove('popap_opened')},1000);
+    formElement.classList.add('popap_close')
+    setTimeout(()=>{formElement.classList.remove('popap_close')},2000);
 }
+
 function savePopap (evnt) { // функция обрабочик кнопки сохранить
     evnt.preventDefault();
     if(evnt.target.id==="popapFormProfile"){
