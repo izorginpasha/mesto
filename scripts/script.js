@@ -49,9 +49,16 @@ function renderItem(item){// создание карточки
   heart.addEventListener('click',()=>{heart.style.background ="url(./images/Union.svg)";} );
   const basket = ElementItem.querySelector('.element-item__basket');
   basket.addEventListener('click',()=>{ElementItem.remove()} );
+  const image = ElementItem.querySelector('.element-item__image');
+  image.addEventListener('click',openPopapImage);
   elementConteiner.append(ElementItem);
 }
-
+function openPopapImage(evnt){
+  formElement = document.querySelector('#popapImage');
+  closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
+  formElement.classList.add('popap_opened');
+  formElement.querySelector('.popap__image').src =evnt.target.src;
+}
 function proverca(item){
   console.log(item);
 }
