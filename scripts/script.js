@@ -47,6 +47,8 @@ function renderItem(item){// создание карточки
   ElementItem.querySelector('.element-item__title').textContent = item.name;
   const heart = ElementItem.querySelector('.element-item__heart');
   heart.addEventListener('click',()=>{heart.style.background ="url(./images/Union.svg)";} );
+  const basket = ElementItem.querySelector('.element-item__basket');
+  basket.addEventListener('click',()=>{ElementItem.remove()} );
   elementConteiner.append(ElementItem);
 }
 

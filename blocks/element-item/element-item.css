@@ -1,4 +1,5 @@
 .element-item{
+    position: relative;
     display: grid;
     width: 100%;
     background-color: #FFFFFF;
