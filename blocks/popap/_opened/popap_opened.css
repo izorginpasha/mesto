@@ -1,5 +1,5 @@
 .popap_opened{
-    display: flex;  
+    display: flex;
     animation: bacgraund 1s linear alternate;
 }
 @keyframes bacgraund{
