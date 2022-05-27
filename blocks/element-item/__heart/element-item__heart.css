@@ -2,17 +2,13 @@
     width: 22px;
     height: 19px;
     background-image: url(../../../images/Vector3.svg);
+    background-color: transparent;
     background-size: 22px 19px;
     margin-right: 5px;
     margin-top: 5px;
     background-repeat: no-repeat;
     border-style: none;
     cursor: pointer;
-}
-.element-item__heart:active{
-    background-image: url(../../../images/Union.svg);
-    
-
 }
 .element-item__heart:hover{
     opacity: 0.5; 

@@ -25,9 +25,13 @@ const initialCards = [ // массив карточек
     }
   ];
 const buttonEdit = document.querySelector('.profile__edit-button');
-let buttonClose = null;
 const buttonAdd = document.querySelector('.profile__add-button');
-let formElement = null;
+const profilePopup = document.querySelector('#popupProfile');
+const cardPopup = document.querySelector('#popupNewMesto');
+const imagePopup = document.querySelector('#popupImage');
+const buttonClose = document.querySelector('.popap__close').addEventListener('click', (event)=>{closePopap(event.target.closest(".popap"))});//слушатель кнопки закрытия
+
+
 const fioValue = document.getElementById('popapFio');
 const hobbyValue = document.getElementById('popapHobby');
 const fio = document.querySelector('.profile__fio');
@@ -37,47 +41,54 @@ const cardsTemplate = document.querySelector('#cards').content; // загото�
 const elementConteiner =  document.querySelector('.element__conteiner');// получаем контеинер для вставки заготовки
 
 
-function renderList(data){//на каждыи элемент списка создаем карточку из заготовки
-  data.forEach((item)=> renderItem(item)) 
+function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
+  data.forEach((item)=> elementConteiner.prepend(createCard(item)) ) 
 } 
-function renderItem(item){// создание карточки
-  const ElementItem = cardsTemplate.querySelector('.element-item').cloneNode(true);
-  ElementItem.querySelector('.element-item__image').src = item.link;
-  ElementItem.querySelector('.element-item__image').alt =item.name;
-  ElementItem.querySelector('.element-item__title').textContent = item.name;
-  const heart = ElementItem.querySelector('.element-item__heart');
-  heart.addEventListener('click',()=>{heart.style.background ="url(./images/Union.svg)";} );
-  const basket = ElementItem.querySelector('.element-item__basket');
-  basket.addEventListener('click',()=>{ElementItem.remove()} );
-  const image = ElementItem.querySelector('.element-item__image');
-  image.addEventListener('click',openPopapImage);
-  elementConteiner.append(ElementItem);
+function createCard(item){// создание карточки
+  const elementItem = cardsTemplate.querySelector('.element-item').cloneNode(true);
+  const elementImage = elementItem.querySelector('.element-item__image');
+  elementImage.src = item.link;
+  elementImage.alt =item.name;
+  elementItem.querySelector('.element-item__title').textContent = item.name;
+  const heart = elementItem.querySelector('.element-item__heart');
+  heart.addEventListener('click',(event)=>{heart.classList.toggle('element-item__heart_like');} );
+  const basket = elementItem.querySelector('.element-item__basket');
+  basket.addEventListener('click',()=>{elementItem.remove()} );
+  elementImage.addEventListener('click',() => openPopapImage(elementItem));
+  return elementItem;
 }
-function openPopapImage(evnt){ //функция открытия всплывающего блока картинки
-  formElement = document.querySelector('#popapImage');
-  buttonClose = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
-  formElement.classList.add('popap_opened');
-  formElement.querySelector('.popap__image').src =evnt.target.src;
-  formElement.querySelector('.popap__image-title').textContent =evnt.target.alt;
+function openPopapImage(item){ //функция открытия всплывающего блока картинки
+  buttonClose = imagePopup.querySelector('.popap__close').addEventListener('click',() =>{closePopap(imagePopup)});// слушатель кнопки закрытия окна редактирования
+  imagePopup.querySelector('.popap__image').src =item.querySelector('.element-item__image').src;
+  imagePopup.querySelector('.popap__image-title').textContent = item.querySelector('.element-item__image').alt;
+  openPopup(imagePopup);
 }
-function openPopap(event){  //функция открытия всплывающего блока
-  if (event.target.classList.value==='profile__edit-button'){
-    formElement = document.querySelector('#popapProfile');
-    fioValue.value=fio.textContent;
-    hobbyValue.value=hobby.textContent;
-    } else {
-      if(event.target.classList.value==='profile__add-button'){
-    formElement = document.querySelector('#popapNewMesto');
-      }
-    }
-    buttonClose = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
-    form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
-    formElement.classList.add('popap_opened');
+function openPopup(popup){ //функция открытия всплывающего блока
+  popup.classList.add('popap_opened');
 }
-function closePopap(){ // функция закрытия всплывающего елемента
-    setTimeout(()=>{formElement.classList.remove('popap_opened')},1000);
-    formElement.classList.add('popap_close')
-    setTimeout(()=>{formElement.classList.remove('popap_close')},2000);
+function openProfilePopap(){
+  fioValue.value=fio.textContent;
+  hobbyValue.value=hobby.textContent;
+  openPopup(profilePopup);
+ }
+// function openPopap(event){  //функция открытия всплывающего блока
+//   if (event.target.classList.value==='profile__edit-button'){
+//     formElement = document.querySelector('#popapProfile');
+//     fioValue.value=fio.textContent;
+//     hobbyValue.value=hobby.textContent;
+//     } else {
+//       if(event.target.classList.value==='profile__add-button'){
+//     formElement = document.querySelector('#popapNewMesto');
+//       }
+//     }
+//     buttonClose = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
+//     form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
+//     formElement.classList.add('popap_opened');
+// }
+function closePopap(popup){ // функция закрытия всплывающего елемента
+  console.log(popup);
+    popup.classList.remove('popap_opened');
+    
 }
 
 function savePopap (evnt) { // функция обрабочик кнопки сохранить
@@ -97,7 +108,7 @@ function savePopap (evnt) { // функция обрабочик кнопки с
       }
     }
 }
-renderList(initialCards);
-buttonAdd.addEventListener('click',openPopap);
-buttonEdit.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля 
+renderCard(initialCards);
+buttonAdd.addEventListener('click',()=>{openPopup(cardPopup)});
+buttonEdit.addEventListener('click',openProfilePopap); // слушатель кнопки открытия окна редактирования профиля 
   

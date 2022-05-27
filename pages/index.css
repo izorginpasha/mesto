@@ -18,6 +18,7 @@
 @import url(../blocks/element-item/__content/element-item__content.css);
 @import url(../blocks/element-item/__basket/element-item__basket.css);
 @import url(../blocks/element-item/__heart/element-item__heart.css);
+@import url(../blocks/element-item/__heart/_like/element-item__heart_like.css);
 @import url(../blocks/element-item/__image/element-item__image.css);
 @import url(../blocks/element-item/__title/element-item__title.css);
 @import url(../blocks/element-item/element-item.css);
