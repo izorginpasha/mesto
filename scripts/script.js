@@ -24,9 +24,9 @@ const initialCards = [ // массив карточек
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-const editButton = document.querySelector('.profile__edit-button');
-let closeButton = null;
-const addButton = document.querySelector('.profile__add-button');
+const buttonEdit = document.querySelector('.profile__edit-button');
+let buttonClose = null;
+const buttonAdd = document.querySelector('.profile__add-button');
 let formElement = null;
 const fioValue = document.getElementById('popapFio');
 const hobbyValue = document.getElementById('popapHobby');
@@ -55,7 +55,7 @@ function renderItem(item){// создание карточки
 }
 function openPopapImage(evnt){ //функция открытия всплывающего блока картинки
   formElement = document.querySelector('#popapImage');
-  closeButton = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
+  buttonClose = formElement.querySelector('.popap__close').addEventListener('click',closePopap);// слушатель кнопки закрытия окна редактирования
   formElement.classList.add('popap_opened');
   formElement.querySelector('.popap__image').src =evnt.target.src;
   formElement.querySelector('.popap__image-title').textContent =evnt.target.alt;
@@ -70,7 +70,7 @@ function openPopap(event){  //функция открытия всплывающ
     formElement = document.querySelector('#popapNewMesto');
       }
     }
-    closeButton = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
+    buttonClose = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
     form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
     formElement.classList.add('popap_opened');
 }
@@ -98,6 +98,6 @@ function savePopap (evnt) { // функция обрабочик кнопки с
     }
 }
 renderList(initialCards);
-addButton.addEventListener('click',openPopap);
-editButton.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля 
+buttonAdd.addEventListener('click',openPopap);
+buttonEdit.addEventListener('click',openPopap); // слушатель кнопки открытия окна редактирования профиля 
   
