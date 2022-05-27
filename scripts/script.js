@@ -89,7 +89,7 @@ function savePopap (evnt) { // функция обрабочик кнопки с
     } else { 
       if(evnt.target.id==="popapFormNewMesto"){
         let a = {
-          name:  document.getElementById('popapName').value,
+          name: document.getElementById('popapName').value,
           link: document.getElementById('popapLink').value
         }
         renderItem(a);
