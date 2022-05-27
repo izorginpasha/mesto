@@ -31,12 +31,10 @@ const cardPopup = document.querySelector('#popupNewMesto');
 const imagePopup = document.querySelector('#popupImage');
 const buttonClose = document.querySelector('.popap__close').addEventListener('click', (event)=>{closePopap(event.target.closest(".popap"))});//слушатель кнопки закрытия
 
-
 const fioValue = document.getElementById('popapFio');
 const hobbyValue = document.getElementById('popapHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
-let form = null;
 const cardsTemplate = document.querySelector('#cards').content; // заготовка верстки cards
 const elementConteiner =  document.querySelector('.element__conteiner');// получаем контеинер для вставки заготовки
 
@@ -58,7 +56,7 @@ function createCard(item){// создание карточки
   return elementItem;
 }
 function openPopapImage(item){ //функция открытия всплывающего блока картинки
-  buttonClose = imagePopup.querySelector('.popap__close').addEventListener('click',() =>{closePopap(imagePopup)});// слушатель кнопки закрытия окна редактирования
+  imageClose = imagePopup.querySelector('.popap__close').addEventListener('click',() =>{closePopap(imagePopup)});// слушатель кнопки закрытия окна редактирования
   imagePopup.querySelector('.popap__image').src =item.querySelector('.element-item__image').src;
   imagePopup.querySelector('.popap__image-title').textContent = item.querySelector('.element-item__image').alt;
   openPopup(imagePopup);
@@ -66,11 +64,16 @@ function openPopapImage(item){ //функция открытия всплыва�
 function openPopup(popup){ //функция открытия всплывающего блока
   popup.classList.add('popap_opened');
 }
-function openProfilePopap(){
+
+function openProfilePopup(){//функция создания окна редоктирования профиля
   fioValue.value=fio.textContent;
   hobbyValue.value=hobby.textContent;
+  const formProfile = profilePopup.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
   openPopup(profilePopup);
- }
+}
+function openAddCardPopup(){//функция создания окна добавления карточки
+
+}
 // function openPopap(event){  //функция открытия всплывающего блока
 //   if (event.target.classList.value==='profile__edit-button'){
 //     formElement = document.querySelector('#popapProfile');
@@ -93,22 +96,23 @@ function closePopap(popup){ // функция закрытия всплываю�
 
 function savePopap (evnt) { // функция обрабочик кнопки сохранить
     evnt.preventDefault();
-    if(evnt.target.id==="popapFormProfile"){
       fio.textContent= fioValue.value;
       hobby.textContent = hobbyValue.value;
-      closePopap();
-    } else { 
-      if(evnt.target.id==="popapFormNewMesto"){
-        let a = {
-          name: document.getElementById('popapName').value,
-          link: document.getElementById('popapLink').value
-        }
-        renderItem(a);
-        closePopap();
-      }
-    }
-}
+      closePopap(profilePopup);
+    } 
+    //     }
+    // } 
+//       if(evnt.target.id==="popapFormNewMesto"){
+//         let a = {
+//           name: document.getElementById('popapName').value,
+//           link: document.getElementById('popapLink').value
+//         }
+//         renderItem(a);
+//         closePopap();
+//       }
+//     }
+// }
 renderCard(initialCards);
 buttonAdd.addEventListener('click',()=>{openPopup(cardPopup)});
-buttonEdit.addEventListener('click',openProfilePopap); // слушатель кнопки открытия окна редактирования профиля 
+buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
   
