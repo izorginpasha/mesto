@@ -1,6 +1,6 @@
-.popup__text_f{
+.popup_text_f{
     color: #c4c4c4;
 }
-.popup__text_f:focus{
+.popup_text_f:focus{
     color:#000000;
 }
