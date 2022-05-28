@@ -29,7 +29,7 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
 const cardPopup = document.querySelector('#popupNewMesto');
 const imagePopup = document.querySelector('#popupImage');
-const buttonClose = document.querySelector('.popap__close').addEventListener('click', (event)=>{closePopap(event.target.closest(".popap"))});//слушатель кнопки закрытия
+//const buttonClose = document.querySelector('.popap__close').addEventListener('click', (event)=>{closePopup(event.target.closest(".popap"))});//слушатель кнопки закрытия
 
 const fioValue = document.getElementById('popapFio');
 const hobbyValue = document.getElementById('popapHobby');
@@ -56,7 +56,7 @@ function createCard(item){// создание карточки
   return elementItem;
 }
 function openPopapImage(item){ //функция открытия всплывающего блока картинки
-  imageClose = imagePopup.querySelector('.popap__close').addEventListener('click',() =>{closePopap(imagePopup)});// слушатель кнопки закрытия окна редактирования
+  imageClose = imagePopup.querySelector('.popap__close').addEventListener('click',() =>{closePopup(imagePopup)});// слушатель кнопки закрытия окна редактирования
   imagePopup.querySelector('.popap__image').src =item.querySelector('.element-item__image').src;
   imagePopup.querySelector('.popap__image-title').textContent = item.querySelector('.element-item__image').alt;
   openPopup(imagePopup);
@@ -68,51 +68,34 @@ function openPopup(popup){ //функция открытия всплывающ�
 function openProfilePopup(){//функция создания окна редоктирования профиля
   fioValue.value=fio.textContent;
   hobbyValue.value=hobby.textContent;
-  const formProfile = profilePopup.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
+  const formProfile = document.querySelector('#popapFormProfile').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
   openPopup(profilePopup);
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
-
+  const formAddCard = document.querySelector('#popapFormNewMesto').addEventListener('submit',newCardPopap);// слушатель кнопки создать у окна добавления карточки
+  openPopup(cardPopup);
 }
-// function openPopap(event){  //функция открытия всплывающего блока
-//   if (event.target.classList.value==='profile__edit-button'){
-//     formElement = document.querySelector('#popapProfile');
-//     fioValue.value=fio.textContent;
-//     hobbyValue.value=hobby.textContent;
-//     } else {
-//       if(event.target.classList.value==='profile__add-button'){
-//     formElement = document.querySelector('#popapNewMesto');
-//       }
-//     }
-//     buttonClose = formElement.querySelector('.popap__close').addEventListener('click', closePopap);// слушатель кнопки закрытия окна редактирования
-//     form = formElement.querySelector('.popap__form').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
-//     formElement.classList.add('popap_opened');
-// }
-function closePopap(popup){ // функция закрытия всплывающего елемента
-  console.log(popup);
+function closePopup(popup){ // функция закрытия всплывающего елемента
     popup.classList.remove('popap_opened');
-    
 }
-
-function savePopap (evnt) { // функция обрабочик кнопки сохранить
-    evnt.preventDefault();
+function savePopap (event) { // функция обрабочик кнопки сохранить
+    event.preventDefault();
       fio.textContent= fioValue.value;
       hobby.textContent = hobbyValue.value;
-      closePopap(profilePopup);
-    } 
-    //     }
-    // } 
-//       if(evnt.target.id==="popapFormNewMesto"){
-//         let a = {
-//           name: document.getElementById('popapName').value,
-//           link: document.getElementById('popapLink').value
-//         }
-//         renderItem(a);
-//         closePopap();
-//       }
-//     }
-// }
+      closePopup(profilePopup);
+} 
+function newCardPopap (event) {
+  event.preventDefault();
+  console.log(cardPopup);
+  let newCard = {
+    name: document.getElementById('popapName').value,
+    link: document.getElementById('popapLink').value
+    }
+    elementConteiner.prepend(createCard(newCard));
+  closePopup(cardPopup);
+
+}
 renderCard(initialCards);
-buttonAdd.addEventListener('click',()=>{openPopup(cardPopup)});
+buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
   
