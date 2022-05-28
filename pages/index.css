@@ -37,4 +37,5 @@
 @import url(../blocks/popap/__conteiner-image/popap__conteiner-image.css);
 @import url(../blocks/popap/__image-title/popap__image-title.css);
 @import url(../blocks/popap/__image/popap__image.css);
-@import url(../blocks/popap//_close/popap_close.css);
+@import url(../blocks/popap/_image_background/popap__image_background.css);
+

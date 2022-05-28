@@ -16,6 +16,9 @@
 .popap__close:hover{
     opacity: 0.6;
 }
+.popap__close:active * .popap{
+    animation: bac 1s linear alternate;
+}
 @media screen and (max-width: 768px){
     .popap__close{
         width: 20px;
@@ -24,3 +27,11 @@
         right: 0px;
     }
 }
+@keyframes bac{
+    from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0.1;
+      }
+  }
