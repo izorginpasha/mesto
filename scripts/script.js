@@ -29,17 +29,17 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
 const cardPopup = document.querySelector('#popupNewMesto');
 const imagePopup = document.querySelector('#popupImage');
-const buttonCloseAddCard = cardPopup.querySelector('.popap__close');
-const buttonCloseProfilePopup = profilePopup.querySelector('.popap__close');
-const buttonCloseProImagePopup = imagePopup.querySelector('.popap__close');
+const buttonCloseAddCard = cardPopup.querySelector('.popup__close');
+const buttonCloseProfilePopup = profilePopup.querySelector('.popup__close');
+const buttonCloseProImagePopup = imagePopup.querySelector('.popup__close');
 
 
-const fioValue = document.getElementById('popapFio');
-const hobbyValue = document.getElementById('popapHobby');
+const fioValue = document.getElementById('popupFio');
+const hobbyValue = document.getElementById('popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
 const cardsTemplate = document.querySelector('#cards').content; // заготовка верстки cards
-const elementConteiner =  document.querySelector('.element__conteiner');// получаем контеинер для вставки заготовки
+const elementConteiner =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
 
 
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
@@ -59,29 +59,29 @@ function createCard(item){// создание карточки
   return elementItem;
 }
 function openPopapImage(item){ //функция открытия всплывающего блока картинки
-  imagePopup.querySelector('.popap__image').src =item.querySelector('.element-item__image').src;
-  imagePopup.querySelector('.popap__image-title').textContent = item.querySelector('.element-item__image').alt;
+  imagePopup.querySelector('.popup__image').src =item.querySelector('.element-item__image').src;
+  imagePopup.querySelector('.popup__image-title').textContent = item.querySelector('.element-item__image').alt;
   openPopup(imagePopup);
 }
 function openPopup(popup){ //функция открытия всплывающего блока
-  popup.classList.add('popap_opened');
+  popup.classList.add('popup_opened');
 }
 
 function openProfilePopup(){//функция создания окна редоктирования профиля
   fioValue.value=fio.textContent;
   hobbyValue.value=hobby.textContent;
-  const formProfile = document.querySelector('#popapFormProfile').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
+  const formProfile = document.querySelector('#popupFormProfile').addEventListener('submit', savePopap);// слушатель кнопки сохранить у окна редактирования профиля
   openPopup(profilePopup);
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
-  name: document.getElementById('popapName').value=null;
-    link: document.getElementById('popapLink').value=null;
-  const formAddCard = document.querySelector('#popapFormNewMesto').addEventListener('submit',newCardPopap);// слушатель кнопки создать у окна добавления карточки
+  name: document.getElementById('popupName').value=null;
+    link: document.getElementById('popupLink').value=null;
+  const formAddCard = document.querySelector('#popupFormNewMesto').addEventListener('submit',newCardPopap);// слушатель кнопки создать у окна добавления карточки
   openPopup(cardPopup);
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента
   popup.isDeteted = true;
-  popup.classList.remove('popap_opened');
+  popup.classList.remove('popup_opened');
 }
 function savePopap (event) { // функция обрабочик кнопки сохранить
     event.preventDefault();
@@ -92,8 +92,8 @@ function savePopap (event) { // функция обрабочик кнопки �
 function newCardPopap (event) { // функция обрабочик кнопки создать
   event.preventDefault();
   let newCard = {
-    name: document.getElementById('popapName').value,
-    link: document.getElementById('popapLink').value
+    name: document.getElementById('popupName').value,
+    link: document.getElementById('popupLink').value
     }
     elementConteiner.prepend(createCard(newCard));
   closePopup(cardPopup);

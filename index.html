@@ -7,7 +7,7 @@
     <title>Mesto</title>
 </head>
 <body class="page">
-    <div class="page__conteiner">
+    <div class="page__container">
         <header class="header">
             <img class="header__logo" src="images/logo.svg" alt="логотип">
         </header>
@@ -15,7 +15,7 @@
             <section class="profile">
                 <img class="profile__avatar" src="images/image.jpg" alt="Фото профиля">
                 <div class="profile__info" >
-                    <div class="profile__conteiner">
+                    <div class="profile__container">
                         <h1 class="profile__fio">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button" type="button"></button>
                     </div>
@@ -24,41 +24,41 @@
                 <button class="profile__add-button" type="button"></button>
             </section>
             <section class="element">
-                <ul class="element__conteiner"></ul>
+                <ul class="element__container"></ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__title">© 2020 Mesto Russia</p>
         </footer>
         
-       <div class="popap" id="popupProfile">
-            <div class="popap__conteiner">
-                <form class="popap__form" id="popapFormProfile" name="popap-form">
-                    <h3 class="popap__title">Редактировать профиль</h3>
-                    <input class="popap__text" type="text" id="popapFio" name="popap-fio">
-                    <input class="popap__text" type="text" id="popapHobby" name="popap-hobby">
-                    <button class="popap__button" type="submit" id="buttonSave"><span class="popap__button-title">Сохранить</span></button>
+       <div class="popup" id="popupProfile">
+            <div class="popup__container">
+                <form class="popup__form" id="popupFormProfile" name="popup-form">
+                    <h3 class="popup__title">Редактировать профиль</h3>
+                    <input class="popup__text" type="text" id="popupFio" name="popup-fio">
+                    <input class="popup__text" type="text" id="popupHobby" name="popup-hobby">
+                    <button class="popup__button" type="submit" id="buttonSave"><span class="popup__button-title">Сохранить</span></button>
                 </form>
-                <button class="popap__close" aria-label="close" type="button"></button>
+                <button class="popup__close" aria-label="close" type="button"></button>
             </div>
         </div>
-        <div class="popap" id="popupNewMesto">
-            <div class="popap__conteiner">
-                <form class="popap__form" id="popapFormNewMesto" name="popap-form">
-                    <h3 class="popap__title">Новое место</h3>
-                    <input class="popap__text popap__text_focus" type="text" id="popapName" name="popap-name" placeholder="Название">
-                    <input class="popap__text popap__text_focus" type="url" id="popapLink" name="popap-Link" placeholder="Ссылка на картинку">
-                    <button class="popap__button" type="submit" id="buttonNew"><span class="popap__button-title">Создать</span></button>
+        <div class="popup" id="popupNewMesto">
+            <div class="popup__container">
+                <form class="popup__form" id="popupFormNewMesto" name="popup-form">
+                    <h3 class="popup__title">Новое место</h3>
+                    <input class="popup__text popap__text_focus" type="text" id="popupName" name="popup-name" placeholder="Название">
+                    <input class="popup__text popap__text_focus" type="url" id="popupLink" name="popup-Link" placeholder="Ссылка на картинку">
+                    <button class="popup__button" type="submit" id="buttonNew"><span class="popup__button-title">Создать</span></button>
                 </form>
-                <button class="popap__close" aria-label="close" type="button"></button>
+                <button class="popup__close" aria-label="close" type="button"></button>
             </div>
         </div>
     </div>
-    <div class="popap popap__image_background" id="popupImage">
-        <div class="popap__conteiner-image">
-            <img class="popap__image">
-            <p class="popap__image-title">Image</p>
-            <button class="popap__close" aria-label="close" type="button"></button>
+    <div class="popup popup__image_background" id="popupImage">
+        <div class="popup__container-image">
+            <img class="popup__image">
+            <p class="popup__image-title">Image</p>
+            <button class="popup__close" aria-label="close" type="button"></button>
         </div>
     </div>
     <template id="cards">
