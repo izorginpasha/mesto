@@ -1,6 +1,6 @@
-.popup__text_foc{
+.foc{
     color: #c4c4c4;
 }
-.popup__text_foc:focus{
+.foc:focus{
     color:#000000;
 }
