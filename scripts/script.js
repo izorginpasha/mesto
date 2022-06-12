@@ -111,3 +111,6 @@ buttonCloseProfilePopup.addEventListener('click', ()=>{closePopup(profilePopup)}
 buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(WindowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
 buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
 buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
+class add{
+  
+}
