@@ -114,27 +114,3 @@ buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель
 
 
 
-class formValidation{ // класс создания валидности формы
-  constructor(config){ 
-    this._config = config;
-  }
-  enableValidation(){
-    const form = document.querySelector(this._config.form);
-    form.addEventListener('submit', this._handelFormSubmit);//слушатель события нажатия кнопки
-    form.addEventListener('input' , this._handelFormInput);// слушатель события ввода 
-  
-  }
-  _handelFormSubmit =(event)=>{
-    event.preventDefault();
-  }
-  _handelFormInput = (event)=>{
-
-  }
-}
-const validProfileConfig ={
-  form: '.popap__form[id="popupFormProfile"]',
-  button: '.popup__button' ,
-  buttonInvalid: '.popup__button_invalid',
-}
-const form1 = new formValidation(validProfileConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
-form1.enableValidation();//включение валидации

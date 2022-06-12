@@ -33,10 +33,12 @@
         
        <div class="popup" id="popupProfile">
             <div class="popup__container">
-                <form class="popup__form" id="popupFormProfile" name="popup-form">
+                <form class="popup__form" id="popupFormProfile" name="popup-form-profile">
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <input class="popup__text" type="text" id="popupFio" name="popup-fio" required minlength="2" maxlength="40">
+                    
                     <input class="popup__text" type="text" id="popupHobby" name="popup-hobby" required minlength="2" maxlength="200">
+                    <span class="popup__error"  id=""></span>
                     <button class="popup__button popup__button_invalid" type="submit" id="buttonSave"><span class="popup__button-title">Сохранить</span></button>
                 </form>
                 <button class="popup__close" aria-label="close" type="button"></button>
@@ -44,10 +46,12 @@
         </div>
         <div class="popup" id="popupNewMesto">
             <div class="popup__container">
-                <form class="popup__form" id="popupFormNewMesto" name="popup-form">
+                <form class="popup__form" id="popupFormNewMesto" name="popup-form-mesto">
                     <h3 class="popup__title">Новое место</h3>
                     <input class="popup__text " type="text" id="popupName" name="popup-name" placeholder="Название">
+                    <span class="popup__error"  id=""></span>
                     <input class="popup__text" type="url" id="popupLink" name="popup-Link" placeholder="Ссылка на картинку">
+                    <span class="popup__error"  id=""></span>
                     <button class="popup__button" type="submit" id="buttonNew"><span class="popup__button-title">Создать</span></button>
                 </form>
                 <button class="popup__close" aria-label="close" type="button"></button>
@@ -70,7 +74,11 @@
                 <button class="element-item__heart" type="button"></button>
             </div>
         </li>
-    </template>   
+    </template> 
+    <template id="span">
+        <span class="popup__error"  id="popup-error"></span>
+    </template>  
     <script src="scripts/script.js"></script>
+    <script src="scripts/validate.js"></script>
 </body>
 </html>
