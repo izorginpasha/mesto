@@ -38,8 +38,9 @@ const buttonSaveProfile = document.querySelector('#popupFormProfile');
 const buttonNewCard = document.querySelector('#popupFormNewMesto');
 const someInputName = document.getElementById('popupName');
 const someInputLink = document.getElementById('popupLink');
-
-
+const popupOverleyProfile = profilePopup.querySelector('.popup__overlay');
+const popupOverleyNewMesto = cardPopup.querySelector('.popup__overlay');
+const popupOverleyImage = WindowImagePopup.querySelector('.popup__overlay');
 const fioValue = document.getElementById('popupFio');
 const hobbyValue = document.getElementById('popupHobby');
 const fio = document.querySelector('.profile__fio');
@@ -103,6 +104,7 @@ function generateCardPopap (event) { // функция обрабочик кно
   closePopup(cardPopup);
 
 }
+
 renderCard(initialCards);
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
@@ -112,5 +114,23 @@ buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(WindowImagePo
 buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
 buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
 
+popupOverleyNewMesto.addEventListener('click',function(event){//слушатель оверлея
+  closePopup(popupOverleyNewMesto.parentElement);
+} );
+popupOverleyProfile.addEventListener('click',function(event){
+  closePopup(popupOverleyProfile.parentElement);
+} );
+popupOverleyImage.addEventListener('click',function(event){
+  closePopup(popupOverleyImage.parentElement);
+} );
+document.addEventListener('keypress', function(event){
+  alert(event.key)
+  if(event.keyCode == 27){
+    alert('yes');
+   const popup =  document.querySelector('popap_open');
+   popup.classList.remove('popup_opened');
 
+  }
+
+});
 
