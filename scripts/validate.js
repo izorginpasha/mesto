@@ -25,7 +25,7 @@ class formValidation{ // класс создания валидности фор
         const form = event.currentTarget;
 
         //Установка текста ошибок
-        this._setCustomError(input);
+        //this._setCustomError(input);
 
 
         //Текст ошибки под каждым полем
@@ -35,29 +35,51 @@ class formValidation{ // класс создания валидности фор
         this._setButtonState(form);
   
     }
-    _setCustomError(input){
-        const validity = input.validity;
-        input.setCustomValidity("");
-        if (validity.tooLong || validity.tooShort){
-            input.setCustomValidity('Срока слишком короткая (или слишком длинная)');
+    // _setCustomError(input){
+    //     const validity = input.validity;
+    //     input.setCustomValidity("");
+    //     if (validity.tooLong || validity.tooShort){
+    //         input.setCustomValidity('Срока слишком короткая (или слишком длинная)');
 
-        }
-        else if(validity.typeMismatch){
-            input.setCustomValidity('Введите ссылку, пожалуиста');
-        }
-    }
+    //     }
+    //     else if(validity.typeMismatch){
+    //         input.setCustomValidity('Введите ссылку, пожалуиста');
+    //     }
+    // }
     _setFieldErorr(input){
-        const target = document.querySelector('#span').content;
-        const elementSpan = target.querySelector('.popup__error').cloneNode(true);
-        elementSpan.textContent = input.validationMessage;
-        input.insertAdjacentElement('beforeEnd', elementSpan);
+        const span = document.querySelector(`.popup__error[name="span-${input.name}"]`);
+        //console.log(`span-${input.name}`);
+        //const span = document.getElementByName(`span-${input.name}`);
+        span.textContent = input.validationMessage;
+
+    }
+    _setButtonState(form){
+      const button = form.querySelector(this._config.button);
+      const isValid = form.checkValidity();
+      if(isValid){
+        button.removeAttribute("disabled");
+        button.classList.remove(this._config.buttonInvalid);
+        button.classList.add(this._config.buttonValid);
+      }else{
+        button.setAttribute("disabled", true);
+        button.classList.remove(this._config.buttonValid);
+        button.classList.add(this._config.buttonInvalid);
+
+      }
 
     }
   }
   const validProfileConfig ={
     form: '.popup__form[id="popupFormProfile"]',
-    button: '.popup__button' ,
-    buttonInvalid: '.popup__button_invalid',
+    button: '.popup__button[id="buttonSave"]' ,
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid'
   }
-  const form1 = new formValidation(validProfileConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
+  const validNewMestoConfig ={
+    form: '.popup__form[id="popupFormNewMesto"]',
+    button: '.popup__button[id="buttonNew"]' ,
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid'
+  }
+  const form1 = new formValidation(validNewMestoConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
   form1.enableValidation();//включение валидации
