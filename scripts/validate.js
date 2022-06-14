@@ -26,6 +26,10 @@ class formValidation{ // класс создания валидности фор
     _setFieldErorr(input){
         const span = document.querySelector(`.popup__error[name="span-${input.name}"]`);
         span.textContent = input.validationMessage;
+        if(input.validationMessage){
+        input.classList.add('popup__text_error');}else{
+          input.classList.remove('popup__text_error');
+        }
 
     }
     _setButtonState(form){
@@ -35,10 +39,12 @@ class formValidation{ // класс создания валидности фор
         button.removeAttribute("disabled");
         button.classList.remove(this._config.buttonInvalid);
         button.classList.add(this._config.buttonValid);
+        button.classList.add(this._config.buttonTitle);
       }else{
         button.setAttribute("disabled", true);
         button.classList.remove(this._config.buttonValid);
         button.classList.add(this._config.buttonInvalid);
+        button.classList.remove(this._config.buttonTitle);
 
       }
 
@@ -48,13 +54,15 @@ class formValidation{ // класс создания валидности фор
     form: '.popup__form[id="popupFormProfile"]',
     button: '.popup__button[id="buttonSave"]' ,
     buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid'
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
   }
   const validNewMestoConfig ={
     form: '.popup__form[id="popupFormNewMesto"]',
     button: '.popup__button[id="buttonNew"]' ,
     buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid'
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
   }
   function enableValidation(validation){
     const form = new formValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля

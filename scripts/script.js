@@ -113,7 +113,20 @@ buttonCloseProfilePopup.addEventListener('click', ()=>{closePopup(profilePopup)}
 buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(WindowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
 buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
 buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
+buttonNewCard.addEventListener('keydown', function(e){
+  
+  if(e.key === "Enter"){
+    const newCard = {
+      name: document.getElementById('popupName').value,
+      link: document.getElementById('popupLink').value
+      }
+      elementContainer.prepend(createCard(newCard));
+    closePopup(cardPopup);
 
+  }
+  
+
+});
 popupOverleyNewMesto.addEventListener('click',function(event){//слушатель оверлея
   closePopup(popupOverleyNewMesto.parentElement);
 } );
@@ -123,14 +136,14 @@ popupOverleyProfile.addEventListener('click',function(event){
 popupOverleyImage.addEventListener('click',function(event){
   closePopup(popupOverleyImage.parentElement);
 } );
-document.addEventListener('keypress', function(event){
-  alert(event.key)
-  if(event.keyCode == 27){
-    alert('yes');
-   const popup =  document.querySelector('popap_open');
-   popup.classList.remove('popup_opened');
+document.addEventListener('keydown', function(e){
+  
+  if(e.key === "Escape"){
+    const popup = document.querySelector(".popup_opened");
+    closePopup(popup);
 
   }
+  
 
 });
 

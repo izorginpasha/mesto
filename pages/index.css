@@ -41,4 +41,6 @@
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/_image-background/popup_image-background.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
+@import url(../blocks/popup/__text/_error/popup__text_error.css);
+@import url(../blocks/popup/__button-title/_ivalid/popup__button-title_ivalid.css);
 
