@@ -1,29 +1,26 @@
-class formValidation{ // класс создания валидности формы
-    constructor(config){ 
-      this._config = config;
-    }
-    Validation(){
-      const form = document.querySelector(this._config.form);
-      form.addEventListener('submit', this._handelFormSubmit);//слушатель события нажатия кнопки
-      form.addEventListener('input' , this._handelFormInput);// слушатель события ввода 
+
     
+    function validation(item){
+      const form = item;
+      form.addEventListener('submit', _handelFormSubmit);//слушатель события нажатия кнопки
+      form.addEventListener('input' , _handelFormInput);// слушатель события ввода 
     }
-    _handelFormSubmit = (event)=>{//проверка валидности при отправке формы
+    function _handelFormSubmit(event){//проверка валидности при отправке формы
       event.preventDefault();
       const form = event.currentTarget;
       const isValid = form.checkValidity();
     }
-    _handelFormInput = (event)=>{//проверка валидности при вводе 
+    function _handelFormInput(event){//проверка валидности при вводе 
         const input = event.target;
         const form = event.currentTarget;
         //Текст ошибки под каждым полем
-        this._setFieldErorr(input);
+        _setFieldErorr(input);
 
         //Вкл или выкл кнопки
-        this._setButtonState(form);
+       _setButtonState(form);
   
     }
-    _setFieldErorr(input){
+    function _setFieldErorr(input){
         const span = document.querySelector(`.popup__error[name="span-${input.name}"]`);
         span.textContent = input.validationMessage;
         if(input.validationMessage){
@@ -32,41 +29,36 @@ class formValidation{ // класс создания валидности фор
         }
 
     }
-    _setButtonState(form){
-      const button = form.querySelector(this._config.button);
+    function _setButtonState(form){
+      const button = form.querySelector(".popup__button");
       const isValid = form.checkValidity();
       if(isValid){
         button.removeAttribute("disabled");
-        button.classList.remove(this._config.buttonInvalid);
-        button.classList.add(this._config.buttonValid);
-        button.classList.add(this._config.buttonTitle);
+        button.classList.remove(config.buttonInvalid);
+        button.classList.add(config.buttonValid);
+        button.classList.add(config.buttonTitle);
       }else{
         button.setAttribute("disabled", true);
-        button.classList.remove(this._config.buttonValid);
-        button.classList.add(this._config.buttonInvalid);
-        button.classList.remove(this._config.buttonTitle);
+        button.classList.remove(config.buttonValid);
+        button.classList.add(config.buttonInvalid);
+        button.classList.remove(config.buttonTitle);
 
       }
 
     }
-  }
-  const validProfileConfig ={
-    form: '.popup__form[id="popupFormProfile"]',
-    button: '.popup__button[id="buttonSave"]' ,
+  const config ={
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
     buttonTitle: 'popup__button-title_ivalid'
   }
-  const validNewMestoConfig ={
-    form: '.popup__form[id="popupFormNewMesto"]',
-    button: '.popup__button[id="buttonNew"]' ,
-    buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid',
-    buttonTitle: 'popup__button-title_ivalid'
+  const enableValidation =(formElement)=>{//перебераем все формы документа
+    const formList =Array.from(document.querySelectorAll('.popup__form'));
+    formList.forEach((formElement) =>{
+      validation(formElement);
+      console.log(formElement);
+
+    });
+    
+
   }
-  function enableValidation(validation){
-    const form = new formValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля
-    form.Validation();
-  }
-  enableValidation(validProfileConfig);//включение валидации
-  enableValidation(validNewMestoConfig);
+  enableValidation();
