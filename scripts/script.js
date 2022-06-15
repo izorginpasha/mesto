@@ -28,19 +28,19 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
 const cardPopup = document.querySelector('#popupNewMesto');
-const WindowImagePopup = document.querySelector('#popupImage');
-const imagePopup = WindowImagePopup.querySelector('.popup__image');
-const imagePopupTitle = WindowImagePopup.querySelector('.popup__image-title');
+const windowImagePopup = document.querySelector('#popupImage');
+const imagePopup = windowImagePopup.querySelector('.popup__image');
+const imagePopupTitle = windowImagePopup.querySelector('.popup__image-title');
 const buttonCloseAddCard = cardPopup.querySelector('.popup__close');
 const buttonCloseProfilePopup = profilePopup.querySelector('.popup__close');
-const buttonCloseProImagePopup = WindowImagePopup.querySelector('.popup__close');
+const buttonCloseProImagePopup = windowImagePopup.querySelector('.popup__close');
 const buttonSaveProfile = document.querySelector('#popupFormProfile');
 const buttonNewCard = document.querySelector('#popupFormNewMesto');
 const someInputName = document.getElementById('popupName');
 const someInputLink = document.getElementById('popupLink');
 const popupOverleyProfile = profilePopup.querySelector('.popup__overlay');
 const popupOverleyNewMesto = cardPopup.querySelector('.popup__overlay');
-const popupOverleyImage = WindowImagePopup.querySelector('.popup__overlay');
+const popupOverleyImage = windowImagePopup.querySelector('.popup__overlay');
 const fioValue = document.getElementById('popupFio');
 const hobbyValue = document.getElementById('popupHobby');
 const fio = document.querySelector('.profile__fio');
@@ -69,10 +69,11 @@ function openPopapImage(event){ //функция открытия всплыва
   imagePopup.src =event.target.src;
   imagePopupTitle.textContent = event.target.alt;
   imagePopup.alt=event.target.alt;
-  openPopup(WindowImagePopup);
+  openPopup(windowImagePopup);
 }
 function openPopup(popup){ //функция открытия всплывающего блока
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', doSomething);
 }
 
 function openProfilePopup(){//функция создания окна редоктирования профиля
@@ -87,6 +88,7 @@ function openAddCardPopup(){//функция создания окна доба�
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', doSomething);
 }
 function savePopapProfile (event) { // функция обрабочик кнопки сохранить
     event.preventDefault();
@@ -104,46 +106,31 @@ function generateCardPopap (event) { // функция обрабочик кно
   closePopup(cardPopup);
 
 }
+function doSomething(e){
+  if(e.key === "Escape"){
+    const popup = document.querySelector(".popup_opened");
+    closePopup(popup);
+
+  }
+}
 
 renderCard(initialCards);
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
 buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки
 buttonCloseProfilePopup.addEventListener('click', ()=>{closePopup(profilePopup)});//слушатель кнопки закрытия окна редактирования профиля
-buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(WindowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
+buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(windowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
 buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
 buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
-buttonNewCard.addEventListener('keydown', function(e){
-  
-  if(e.key === "Enter"){
-    const newCard = {
-      name: document.getElementById('popupName').value,
-      link: document.getElementById('popupLink').value
-      }
-      elementContainer.prepend(createCard(newCard));
-    closePopup(cardPopup);
 
-  }
-  
-
-});
 popupOverleyNewMesto.addEventListener('click',function(event){//слушатель оверлея
-  closePopup(popupOverleyNewMesto.parentElement);
+  closePopup(document.querySelector(".popup_opened"));
 } );
 popupOverleyProfile.addEventListener('click',function(event){
-  closePopup(popupOverleyProfile.parentElement);
+  closePopup(document.querySelector(".popup_opened"));
 } );
 popupOverleyImage.addEventListener('click',function(event){
-  closePopup(popupOverleyImage.parentElement);
+  closePopup(document.querySelector(".popup_opened"));
 } );
-document.addEventListener('keydown', function(e){
-  
-  if(e.key === "Escape"){
-    const popup = document.querySelector(".popup_opened");
-    closePopup(popup);
 
-  }
-  
-
-});
 
