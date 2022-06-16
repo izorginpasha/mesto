@@ -103,7 +103,14 @@ function generateCardPopap (event) { // функция обрабочик кно
     link: document.getElementById('popupLink').value
     }
     elementContainer.prepend(createCard(newCard));
+    const form = event.currentTarget;
+    const button = form.querySelector(".popup__button");
+    button.setAttribute("disabled", true);
+    //_setButtonState( event.currentTarget);
   closePopup(cardPopup);
+
+  
+  
 
 }
 function doSomething(e){

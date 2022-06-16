@@ -55,7 +55,6 @@
     const formList =Array.from(document.querySelectorAll('.popup__form'));
     formList.forEach((formElement) =>{
       validation(formElement);
-      console.log(formElement);
 
     });
     
