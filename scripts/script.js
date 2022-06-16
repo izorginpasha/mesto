@@ -1,29 +1,4 @@
-const initialCards = [ // массив карточек
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
@@ -36,13 +11,13 @@ const buttonCloseProfilePopup = profilePopup.querySelector('.popup__close');
 const buttonCloseProImagePopup = windowImagePopup.querySelector('.popup__close');
 const buttonSaveProfile = document.querySelector('#popupFormProfile');
 const buttonNewCard = document.querySelector('#popupFormNewMesto');
-const someInputName = document.getElementById('popupName');
-const someInputLink = document.getElementById('popupLink');
+const someInputName = document.querySelector('#popupName');
+const someInputLink = document.querySelector('#popupLink');
 const popupOverleyProfile = profilePopup.querySelector('.popup__overlay');
 const popupOverleyNewMesto = cardPopup.querySelector('.popup__overlay');
 const popupOverleyImage = windowImagePopup.querySelector('.popup__overlay');
-const fioValue = document.getElementById('popupFio');
-const hobbyValue = document.getElementById('popupHobby');
+const fioValue = document.querySelector('#popupFio');
+const hobbyValue = document.querySelector('#popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
 const cardsTemplate = document.querySelector('#cards').content; // заготовка верстки cards
@@ -82,8 +57,7 @@ function openProfilePopup(){//функция создания окна редо�
   openPopup(profilePopup);
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
-   someInputName.value="";
-   someInputLink.value="";
+  buttonNewCard.reset();
   openPopup(cardPopup);
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента
@@ -99,14 +73,13 @@ function savePopapProfile (event) { // функция обрабочик кно�
 function generateCardPopap (event) { // функция обрабочик кнопки создать
   event.preventDefault();
   const newCard = {
-    name: document.getElementById('popupName').value,
-    link: document.getElementById('popupLink').value
+    name: someInputName.value,
+    link: someInputLink.value
     }
     elementContainer.prepend(createCard(newCard));
     const form = event.currentTarget;
     const button = form.querySelector(".popup__button");
     button.setAttribute("disabled", true);
-    //_setButtonState( event.currentTarget);
   closePopup(cardPopup);
 
   
