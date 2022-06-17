@@ -48,7 +48,7 @@ function openPopapImage(event){ //функция открытия всплыва
 }
 function openPopup(popup){ //функция открытия всплывающего блока
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', doSomething);
+  document.addEventListener('keydown', closeByEscape);
 }
 
 function openProfilePopup(){//функция создания окна редоктирования профиля
@@ -62,7 +62,7 @@ function openAddCardPopup(){//функция создания окна доба�
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', doSomething);
+  document.removeEventListener('keydown', closeByEscape);
 }
 function savePopapProfile (event) { // функция обрабочик кнопки сохранить
     event.preventDefault();
@@ -86,7 +86,7 @@ function generateCardPopap (event) { // функция обрабочик кно
   
 
 }
-function doSomething(e){
+function closeByEscape(e){
   if(e.key === "Escape"){
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
