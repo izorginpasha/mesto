@@ -11,11 +11,15 @@ class Card{ // класс создания карточки
         elementImage.alt =this._configCard.name;
         elementItem.querySelector('.element-item__title').textContent = this._configCard.name;
         const heart = elementItem.querySelector('.element-item__heart');
-        heart.addEventListener('click',(event)=>{heart.classList.toggle('element-item__heart_like');} );
+        heart.addEventListener('click',this._like);
         const basket = elementItem.querySelector('.element-item__basket');
         basket.addEventListener('click',()=>{elementItem.remove()} );
         elementImage.addEventListener('click',openPopapImage);
         return elementItem;
         
+      }
+      _like(event){
+        event.target.classList.toggle('element-item__heart_like');
+
       }
 }
