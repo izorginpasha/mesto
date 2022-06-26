@@ -1,5 +1,5 @@
-import {openPopapImage} from './script.js';
- class Card{ // класс создания карточки
+
+ export class Card{ // класс создания карточки
     constructor(_selectorCardsTemplate, _configCard){ 
       this._selectorCardsTemplate = _selectorCardsTemplate;
       this._configCard = _configCard;
@@ -15,7 +15,7 @@ import {openPopapImage} from './script.js';
         heart.addEventListener('click',this._like);
         const basket = elementItem.querySelector('.element-item__basket');
         basket.addEventListener('click',()=>{elementItem.remove()} );
-        elementImage.addEventListener('click',openPopapImage);
+        // elementImage.addEventListener('click',openPopapImage);
         return elementItem;
         
       }
@@ -24,8 +24,4 @@ import {openPopapImage} from './script.js';
 
       }
 }
-export function createCard(item){// создание карточки
-  const selectorCardsTemplate = '#cards';
-  const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
-    return card.createCard();
-}
+

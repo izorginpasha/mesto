@@ -1,5 +1,5 @@
-import {validProfileConfig , validNewMestoConfig} from './script.js';
-class formValidation{ // класс создания валидности формы
+
+export class FormValidation{ // класс создания валидности формы
   constructor(config){ 
     this._config = config;
   }
@@ -52,9 +52,3 @@ class formValidation{ // класс создания валидности фор
   }
 }
 
-function Validation(validation){
-  const form = new formValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля
-  form.enableValidation();
-}
-Validation(validProfileConfig);//включение валидации
-Validation(validNewMestoConfig);

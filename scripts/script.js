@@ -1,5 +1,6 @@
-import {createCard} from './Card.js';
- export const initialCards = [ // массив карточек
+import {FormValidation} from './FormValidator.js';
+import {Card} from './Card.js';
+ const initialCards = [ // массив карточек
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,14 +26,14 @@ import {createCard} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  export const validProfileConfig ={
+  const validProfileConfig ={
     form: '.popup__form[id="popupFormProfile"]',
     button: '.popup__button[id="buttonSave"]' ,
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
     buttonTitle: 'popup__button-title_ivalid'
   }
-  export const validNewMestoConfig ={
+  const validNewMestoConfig ={
     form: '.popup__form[id="popupFormNewMesto"]',
     button: '.popup__button[id="buttonNew"]' ,
     buttonInvalid: 'popup__button_invalid',
@@ -65,15 +66,20 @@ const elementContainer =  document.querySelector('.element__container');// по�
 
 
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
-  data.forEach((item)=> elementContainer.prepend(createCard(item)) ) 
+  data.forEach((item)=> elementContainer.prepend(newCard(item)) ) 
 } 
+ function newCard(item){// создание карточки
+  const selectorCardsTemplate = '#cards';
+  const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
+    return card.createCard();
+}
 export function openPopapImage(event){ //функция открытия всплывающего блока картинки
   imagePopup.src =event.target.src;
   imagePopupTitle.textContent = event.target.alt;
   imagePopup.alt=event.target.alt;
   openPopup(windowImagePopup);
 }
-function openPopup(popup){ //функция открытия всплывающего блока
+export function openPopup(popup){ //функция открытия всплывающего блока
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', doSomething);
 }
@@ -120,8 +126,13 @@ function doSomething(e){
 
   }
 }
-
-renderCard(initialCards);
+function Validation(validation){
+  const form = new FormValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля
+  form.enableValidation();
+}
+Validation(validProfileConfig);//включение валидации
+Validation(validNewMestoConfig);
+ renderCard(initialCards);
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
 buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки
