@@ -1,4 +1,5 @@
-class Card{ // класс создания карточки
+import {openPopapImage} from './script.js';
+ class Card{ // класс создания карточки
     constructor(_selectorCardsTemplate, _configCard){ 
       this._selectorCardsTemplate = _selectorCardsTemplate;
       this._configCard = _configCard;
@@ -22,4 +23,9 @@ class Card{ // класс создания карточки
         event.target.classList.toggle('element-item__heart_like');
 
       }
+}
+export function createCard(item){// создание карточки
+  const selectorCardsTemplate = '#cards';
+  const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
+    return card.createCard();
 }

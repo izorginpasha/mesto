@@ -1,4 +1,44 @@
-
+import {createCard} from './Card.js';
+ export const initialCards = [ // массив карточек
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+  export const validProfileConfig ={
+    form: '.popup__form[id="popupFormProfile"]',
+    button: '.popup__button[id="buttonSave"]' ,
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
+  }
+  export const validNewMestoConfig ={
+    form: '.popup__form[id="popupFormNewMesto"]',
+    button: '.popup__button[id="buttonNew"]' ,
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
+  }
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
@@ -25,16 +65,9 @@ const elementContainer =  document.querySelector('.element__container');// по�
 
 
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
-  // data.forEach((item)=> elementContainer.prepend(createCard(item)) ) 
   data.forEach((item)=> elementContainer.prepend(createCard(item)) ) 
 } 
-function createCard(item){// создание карточки
-  const selectorCardsTemplate = '#cards';
-  const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
-    return card.createCard();
-}
-
-function openPopapImage(event){ //функция открытия всплывающего блока картинки
+export function openPopapImage(event){ //функция открытия всплывающего блока картинки
   imagePopup.src =event.target.src;
   imagePopupTitle.textContent = event.target.alt;
   imagePopup.alt=event.target.alt;
