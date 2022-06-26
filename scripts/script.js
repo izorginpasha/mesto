@@ -33,19 +33,7 @@ function createCard(item){// создание карточки
   const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
     return card.createCard();
 }
-// function createCard(item){// создание карточки
-//   const elementItem = cardsTemplate.querySelector('.element-item').cloneNode(true);
-//   const elementImage = elementItem.querySelector('.element-item__image');
-//   elementImage.src = item.link;
-//   elementImage.alt =item.name;
-//   elementItem.querySelector('.element-item__title').textContent = item.name;
-//   const heart = elementItem.querySelector('.element-item__heart');
-//   heart.addEventListener('click',(event)=>{heart.classList.toggle('element-item__heart_like');} );
-//   const basket = elementItem.querySelector('.element-item__basket');
-//   basket.addEventListener('click',()=>{elementItem.remove()} );
-//   elementImage.addEventListener('click',openPopapImage);
-//   return elementItem;
-// }
+
 function openPopapImage(event){ //функция открытия всплывающего блока картинки
   imagePopup.src =event.target.src;
   imagePopupTitle.textContent = event.target.alt;
