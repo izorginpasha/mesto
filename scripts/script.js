@@ -1,6 +1,6 @@
 import {FormValidation} from './FormValidator.js';
 import {Card} from './Card.js';
- const initialCards = [ // массив карточек
+ const initialCards = [ // массив карточе
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -26,7 +26,7 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  const validProfileConfig ={
+  const validProfileConfig ={// обьекты для валидации
     form: '.popup__form[id="popupFormProfile"]',
     button: '.popup__button[id="buttonSave"]' ,
     buttonInvalid: 'popup__button_invalid',
@@ -61,25 +61,22 @@ const fioValue = document.querySelector('#popupFio');
 const hobbyValue = document.querySelector('#popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
-const cardsTemplate = document.querySelector('#cards').content; // заготовка верстки cards
 const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
 
 
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
-  data.forEach((item)=> elementContainer.prepend(newCard(item)) ) 
+  data.forEach((item)=> elementContainer.prepend(newItemCard(item)) ) 
 } 
- function newCard(item){// создание карточки
+ function newItemCard(item){// создание карточки
   const selectorCardsTemplate = '#cards';
   const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
-    return card.createCard();
+  const newItem = card.createCard();
+  const elementImage = newItem.querySelector('.element-item__image');
+  elementImage.addEventListener('click',openPopapImage);
+  return newItem;
 }
-export function openPopapImage(event){ //функция открытия всплывающего блока картинки
-  imagePopup.src =event.target.src;
-  imagePopupTitle.textContent = event.target.alt;
-  imagePopup.alt=event.target.alt;
-  openPopup(windowImagePopup);
-}
-export function openPopup(popup){ //функция открытия всплывающего блока
+
+function openPopup(popup){ //функция открытия всплывающего блока
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', doSomething);
 }
@@ -88,6 +85,12 @@ function openProfilePopup(){//функция создания окна редо�
   fioValue.value=fio.textContent;
   hobbyValue.value=hobby.textContent;
   openPopup(profilePopup);
+}
+function openPopapImage(event){ //функция открытия всплывающего блока картинки
+  imagePopup.src =event.target.src;
+  imagePopupTitle.textContent = event.target.alt;
+  imagePopup.alt=event.target.alt;
+  openPopup(windowImagePopup);
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
   buttonNewCard.reset();
@@ -109,17 +112,14 @@ function generateCardPopap (event) { // функция обрабочик кно
     name: someInputName.value,
     link: someInputLink.value
     }
-    elementContainer.prepend(createCard(newCard));
+    elementContainer.prepend(newItemCard(newCard));
     const form = event.currentTarget;
     const button = form.querySelector(".popup__button");
     button.setAttribute("disabled", true);
   closePopup(cardPopup);
-
-  
-  
-
 }
-function doSomething(e){
+
+function doSomething(e){//обрабочик нажатия Ecpase
   if(e.key === "Escape"){
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
@@ -132,7 +132,7 @@ function Validation(validation){
 }
 Validation(validProfileConfig);//включение валидации
 Validation(validNewMestoConfig);
- renderCard(initialCards);
+ renderCard(initialCards);//создание карточек
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
 buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки

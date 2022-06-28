@@ -24,7 +24,7 @@ export class FormValidation{ // класс создания валидности
       this._setButtonState(form);
 
   }
-  _setFieldErorr(input){
+  _setFieldErorr(input){//Текст ошибки под каждым полем
       const span = document.querySelector(`#span-${input.name}`);
       span.textContent = input.validationMessage;
       if(input.validationMessage){
@@ -33,7 +33,7 @@ export class FormValidation{ // класс создания валидности
       }
 
   }
-  _setButtonState(form){
+  _setButtonState(form){//Вкл или выкл кнопки
     const button = form.querySelector(this._config.button);
     const isValid = form.checkValidity();
     if(isValid){
