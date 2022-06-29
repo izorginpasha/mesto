@@ -26,7 +26,7 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  const validProfileConfig ={// обьекты для валидации
+  const validProfileConfig ={// обьекты для валидации 
     form: '.popup__form[id="popupFormProfile"]',
     button: '.popup__button[id="buttonSave"]' ,
     buttonInvalid: 'popup__button_invalid',
@@ -149,7 +149,8 @@ popupOverleyProfile.addEventListener('click',function(event){
   closePopup(document.querySelector(".popup_opened"));
 } );
 popupOverleyImage.addEventListener('click',function(event){
-  closePopup(document.querySelector(".popup_opened"));
+  closePopup(document.querySelector(".popup_opened"));//
 } );
+//
 
-
+t
