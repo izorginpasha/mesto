@@ -1,6 +1,6 @@
 import {FormValidation} from './FormValidator.js';
 import {Card} from './Card.js';
- const initialCards = [ // массив карточе
+ const initialCards = [ // массив карточек
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -26,16 +26,7 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  const validProfileConfig ={// обьекты для валидации 
-    form: '.popup__form[id="popupFormProfile"]',
-    button: '.popup__button[id="buttonSave"]' ,
-    buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid',
-    buttonTitle: 'popup__button-title_ivalid'
-  }
-  const validNewMestoConfig ={
-    form: '.popup__form[id="popupFormNewMesto"]',
-    button: '.popup__button[id="buttonNew"]' ,
+  const validConfig ={// обьекты для валидации 
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
     buttonTitle: 'popup__button-title_ivalid'
@@ -69,11 +60,11 @@ function renderCard(data){//на каждыи элемент списка соз
 } 
  function newItemCard(item){// создание карточки
   const selectorCardsTemplate = '#cards';
-  const card = new Card(selectorCardsTemplate,item);// создание экземпляра класса 
-  const newItem = card.createCard();
-  const elementImage = newItem.querySelector('.element-item__image');
-  elementImage.addEventListener('click',openPopapImage);
-  return newItem;
+  const card = new Card(selectorCardsTemplate,item,openPopapImage);// создание экземпляра класса 
+  // const newItem = card.createCard();
+  // const elementImage = newItem.querySelector('.element-item__image');
+  // elementImage.addEventListener('click',openPopapImage);
+  return card.createCard();
 }
 
 function openPopup(popup){ //функция открытия всплывающего блока
@@ -131,8 +122,8 @@ function Validation(validation){
   const form = new FormValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля
   form.enableValidation();
 }
-Validation(validProfileConfig);//включение валидации
-Validation(validNewMestoConfig);
+// Validation(validProfileConfig);//включение валидации
+// Validation(validNewMestoConfig);
  renderCard(initialCards);//создание карточек
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
@@ -149,8 +140,7 @@ popupOverleyProfile.addEventListener('click',function(event){
   closePopup(document.querySelector(".popup_opened"));
 } );
 popupOverleyImage.addEventListener('click',function(event){
-  closePopup(document.querySelector(".popup_opened"));//
+  closePopup(document.querySelector(".popup_opened"));
 } );
-//
 
-t
+

@@ -1,8 +1,9 @@
 
  export class Card  { // класс создания карточки
-    constructor(_selectorCardsTemplate, _configCard){ 
+    constructor(_selectorCardsTemplate, _configCard,openPopapImage){ 
       this._selectorCardsTemplate = _selectorCardsTemplate;
       this._configCard = _configCard;
+      this._openPopapImage = openPopapImage;
     }
      createCard(){// создание карточки
         const cardsTemplate =  document.querySelector(this._selectorCardsTemplate).content; // заготовка верстки cards
@@ -16,6 +17,7 @@
         heart.addEventListener('click',this._like);
         const basket = elementItem.querySelector('.element-item__basket');
         basket.addEventListener('click',()=>{elementItem.remove()} );
+        elementImage.addEventListener('click',this._openPopapImage);
         return elementItem;
         
       }
