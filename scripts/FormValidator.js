@@ -10,7 +10,7 @@ export class FormValidator{ // класс создания валидности 
     
     this._form.addEventListener('submit', this._handelFormSubmit);//слушатель события нажатия кнопки
     this._form.addEventListener('input' , this._handelFormInput);// слушатель события ввода 
-    console.log(this._inputList);
+  
   
   }
   _formCheckValidity(form){
@@ -62,7 +62,7 @@ export class FormValidator{ // класс создания валидности 
       formSpan.textContent="";
       });
       
-      this.setButtonState(this._form);
+      
 
   }
 }
