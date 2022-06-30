@@ -1,4 +1,4 @@
-import {FormValidation} from './FormValidator.js';
+import {FormValidation, FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
  const initialCards = [ // массив карточек
     {
@@ -26,25 +26,25 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  const validProfileConfig ={// обьекты для валидации 
-    form: '.popup__form[id="popupFormProfile"]',
-    button: '.popup__button[id="buttonSave"]' ,
-    buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid',
-    buttonTitle: 'popup__button-title_ivalid'
-  }
-  const validNewMestoConfig ={
-    form: '.popup__form[id="popupFormNewMesto"]',
-    button: '.popup__button[id="buttonNew"]' ,
-    buttonInvalid: 'popup__button_invalid',
-    buttonValid: 'popup__button_valid',
-    buttonTitle: 'popup__button-title_ivalid'
-  }
-  // const validConfig ={// обьекты для валидации 
+  // const validProfileConfig ={// обьекты для валидации 
+  //   form: '.popup__form[id="popupFormProfile"]',
+  //   button: '.popup__button[id="buttonSave"]' ,
   //   buttonInvalid: 'popup__button_invalid',
   //   buttonValid: 'popup__button_valid',
   //   buttonTitle: 'popup__button-title_ivalid'
   // }
+  // const validNewMestoConfig ={
+  //   form: '.popup__form[id="popupFormNewMesto"]',
+  //   button: '.popup__button[id="buttonNew"]' ,
+  //   buttonInvalid: 'popup__button_invalid',
+  //   buttonValid: 'popup__button_valid',
+  //   buttonTitle: 'popup__button-title_ivalid'
+  // }
+  const validConfig ={// обьекты для валидации 
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
+  }
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
@@ -67,8 +67,8 @@ const hobbyValue = document.querySelector('#popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
 const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
-const itemValidProfileConfig = new FormValidation(validProfileConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
-const itemValidNewMestoConfig = new FormValidation(validNewMestoConfig);
+const itemValidProfileConfig = new FormValidator(validConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
+const itemValidNewMestoConfig = new FormValidator(validConfig);// создание экземпляра класса валидности, для формы добавления карточки
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
   data.forEach((item)=> elementContainer.prepend(newItemCard(item)) ) 
 } 
@@ -118,8 +118,6 @@ function generateCardPopap (event) { // функция обрабочик кно
     const form = event.currentTarget;
     
     itemValidNewMestoConfig.setButtonState(form); 
-    // const button = form.querySelector(".popup__button");
-    // button.setAttribute("disabled", true);
   closePopup(cardPopup);
 }
 

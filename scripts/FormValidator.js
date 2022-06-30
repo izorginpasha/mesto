@@ -1,5 +1,5 @@
 
-export class FormValidation{ // класс создания валидности формы
+export class FormValidator{ // класс создания валидности формы
   constructor(config){ 
     this._config = config;
   }
