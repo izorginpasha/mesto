@@ -1,4 +1,4 @@
-import {FormValidation, FormValidator} from './FormValidator.js';
+import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
  const initialCards = [ // массив карточек
     {
@@ -41,9 +41,12 @@ import {Card} from './Card.js';
   //   buttonTitle: 'popup__button-title_ivalid'
   // }
   const validConfig ={// обьекты для валидации 
+    button: '.popup__button',
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
-    buttonTitle: 'popup__button-title_ivalid'
+    buttonTitle: 'popup__button-title_ivalid',
+    popupErorClass: 'popup__text_error',
+    span: '.popup__error',
   }
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -67,8 +70,8 @@ const hobbyValue = document.querySelector('#popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
 const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
-const itemValidProfileConfig = new FormValidator(validConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
-const itemValidNewMestoConfig = new FormValidator(validConfig);// создание экземпляра класса валидности, для формы добавления карточки
+const itemValidProfileConfig = new FormValidator(validConfig,buttonSaveProfile);// создание экземпляра класса валидности, для формы редактирвания профиля
+const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );// создание экземпляра класса валидности, для формы добавления карточки
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
   data.forEach((item)=> elementContainer.prepend(newItemCard(item)) ) 
 } 
@@ -86,6 +89,7 @@ function openPopup(popup){ //функция открытия всплывающ�
 function openProfilePopup(){//функция создания окна редоктирования профиля
   fioValue.value=fio.textContent;
   hobbyValue.value=hobby.textContent;
+  itemValidProfileConfig.resetEror();
   openPopup(profilePopup);
 }
 function openPopapImage(event){ //функция открытия всплывающего блока картинки
@@ -96,6 +100,7 @@ function openPopapImage(event){ //функция открытия всплыва
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
   buttonNewCard.reset();
+  itemValidNewMestoConfig .resetEror();
   openPopup(cardPopup);
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента

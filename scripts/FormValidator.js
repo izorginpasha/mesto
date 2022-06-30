@@ -1,53 +1,68 @@
 
 export class FormValidator{ // класс создания валидности формы
-  constructor(config){ 
+  constructor(config, form){ 
     this._config = config;
+    this._form = form;
+    this._button = form.querySelector(this._config.button);
+    this._spanList = form.querySelectorAll(this._config.span);
   }
   enableValidation(){
-    const form = document.querySelector(this._config.form);
-    form.addEventListener('submit', this._handelFormSubmit);//слушатель события нажатия кнопки
-    form.addEventListener('input' , this._handelFormInput);// слушатель события ввода 
+    
+    this._form.addEventListener('submit', this._handelFormSubmit);//слушатель события нажатия кнопки
+    this._form.addEventListener('input' , this._handelFormInput);// слушатель события ввода 
+    console.log(this._inputList);
   
+  }
+  _formCheckValidity(form){
+    const isValid = form.checkValidity();
+    return isValid;
   }
   _handelFormSubmit = (event)=>{//проверка валидности при отправке формы
     event.preventDefault();
-    const form = event.currentTarget;
-    const isValid = form.checkValidity();
+    this._formCheckValidity(this._form);
   }
   _handelFormInput = (event)=>{//проверка валидности при вводе 
       const input = event.target;
-      const form = event.currentTarget;
       //Текст ошибки под каждым полем
       this._setFieldErorr(input);
 
       //Вкл или выкл кнопки
-      this.setButtonState(form);
+      this.setButtonState(this._form);
 
   }
   _setFieldErorr(input){//Текст ошибки под каждым полем
-      const span = document.querySelector(`#span-${input.name}`);
+      const span = this._form.querySelector(`#span-${input.name}`);
       span.textContent = input.validationMessage;
       if(input.validationMessage){
-      input.classList.add('popup__text_error');}else{
-        input.classList.remove('popup__text_error');
+      input.classList.add(this._config.popupErorClass);}else{
+        input.classList.remove(this._config.popupErorClass);
       }
 
   }
   setButtonState(form){//Вкл или выкл кнопки
-    const button = form.querySelector(this._config.button);
-    const isValid = form.checkValidity();
-    if(isValid){
-      button.removeAttribute("disabled");
-      button.classList.remove(this._config.buttonInvalid);
-      button.classList.add(this._config.buttonValid);
-      button.classList.add(this._config.buttonTitle);
+    
+    
+    if(this._formCheckValidity(form)){
+      this._button.removeAttribute("disabled");
+      this._button.classList.remove(this._config.buttonInvalid);
+      this._button.classList.add(this._config.buttonValid);
+      this._button.classList.add(this._config.buttonTitle);
     }else{
-      button.setAttribute("disabled", true);
-      button.classList.remove(this._config.buttonValid);
-      button.classList.add(this._config.buttonInvalid);
-      button.classList.remove(this._config.buttonTitle);
+      this._button.setAttribute("disabled", true);
+      this._button.classList.remove(this._config.buttonValid);
+      this._button.classList.add(this._config.buttonInvalid);
+      this._button.classList.remove(this._config.buttonTitle);
 
     }
+    
+
+  }
+  resetEror(form){
+    this._spanList.forEach((formSpan) => {
+      formSpan.textContent="";
+      });
+      
+      this.setButtonState(this._form);
 
   }
 }
