@@ -26,11 +26,25 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  const validConfig ={// обьекты для валидации 
+  const validProfileConfig ={// обьекты для валидации 
+    form: '.popup__form[id="popupFormProfile"]',
+    button: '.popup__button[id="buttonSave"]' ,
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
     buttonTitle: 'popup__button-title_ivalid'
   }
+  const validNewMestoConfig ={
+    form: '.popup__form[id="popupFormNewMesto"]',
+    button: '.popup__button[id="buttonNew"]' ,
+    buttonInvalid: 'popup__button_invalid',
+    buttonValid: 'popup__button_valid',
+    buttonTitle: 'popup__button-title_ivalid'
+  }
+  // const validConfig ={// обьекты для валидации 
+  //   buttonInvalid: 'popup__button_invalid',
+  //   buttonValid: 'popup__button_valid',
+  //   buttonTitle: 'popup__button-title_ivalid'
+  // }
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
@@ -53,17 +67,14 @@ const hobbyValue = document.querySelector('#popupHobby');
 const fio = document.querySelector('.profile__fio');
 const hobby = document.querySelector('.profile__hobby');
 const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
-
-
+const itemValidProfileConfig = new FormValidation(validProfileConfig);// создание экземпляра класса валидности, для формы редактирвания профиля
+const itemValidNewMestoConfig = new FormValidation(validNewMestoConfig);
 function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
   data.forEach((item)=> elementContainer.prepend(newItemCard(item)) ) 
 } 
  function newItemCard(item){// создание карточки
   const selectorCardsTemplate = '#cards';
   const card = new Card(selectorCardsTemplate,item,openPopapImage);// создание экземпляра класса 
-  // const newItem = card.createCard();
-  // const elementImage = newItem.querySelector('.element-item__image');
-  // elementImage.addEventListener('click',openPopapImage);
   return card.createCard();
 }
 
@@ -105,8 +116,10 @@ function generateCardPopap (event) { // функция обрабочик кно
     }
     elementContainer.prepend(newItemCard(newCard));
     const form = event.currentTarget;
-    const button = form.querySelector(".popup__button");
-    button.setAttribute("disabled", true);
+    
+    itemValidNewMestoConfig.setButtonState(form); 
+    // const button = form.querySelector(".popup__button");
+    // button.setAttribute("disabled", true);
   closePopup(cardPopup);
 }
 
@@ -118,12 +131,11 @@ function closeByEscape(e){//обрабочик нажатия Ecpase
 
   }
 }
-function Validation(validation){
-  const form = new FormValidation(validation);// создание экземпляра класса валидности, для формы редактирвания профиля
-  form.enableValidation();
+function validation(validation){
+  validation.enableValidation();
 }
-// Validation(validProfileConfig);//включение валидации
-// Validation(validNewMestoConfig);
+ validation(itemValidProfileConfig);//включение валидации
+ validation(itemValidNewMestoConfig);
  renderCard(initialCards);//создание карточек
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 

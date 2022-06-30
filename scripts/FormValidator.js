@@ -21,7 +21,7 @@ export class FormValidation{ // класс создания валидности
       this._setFieldErorr(input);
 
       //Вкл или выкл кнопки
-      this._setButtonState(form);
+      this.setButtonState(form);
 
   }
   _setFieldErorr(input){//Текст ошибки под каждым полем
@@ -33,7 +33,7 @@ export class FormValidation{ // класс создания валидности
       }
 
   }
-  _setButtonState(form){//Вкл или выкл кнопки
+  setButtonState(form){//Вкл или выкл кнопки
     const button = form.querySelector(this._config.button);
     const isValid = form.checkValidity();
     if(isValid){

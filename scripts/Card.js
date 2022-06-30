@@ -1,5 +1,5 @@
 
- export class Card  { // класс создания карточки
+ export  class Card  { // класс создания карточки
     constructor(_selectorCardsTemplate, _configCard,openPopapImage){ 
       this._selectorCardsTemplate = _selectorCardsTemplate;
       this._configCard = _configCard;
