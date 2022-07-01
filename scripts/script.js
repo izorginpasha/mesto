@@ -1,6 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
- const initialCards = [ // массив карточек
+const initialCards = [ // массив карточек
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,16 +25,16 @@ import {Card} from './Card.js';
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+];
   
-  const validConfig ={// обьекты для валидации 
+const validConfig ={// обьекты для валидации 
     button: '.popup__button',
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
     buttonTitle: 'popup__button-title_ivalid',
     popupErorClass: 'popup__text_error',
-    span: '.popup__error',
-  }
+    input: '.popup__text',
+}
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('#popupProfile');
@@ -87,19 +87,20 @@ function openPopapImage(event){ //функция открытия всплыва
 }
 function openAddCardPopup(){//функция создания окна добавления карточки
   buttonNewCard.reset();
-  itemValidNewMestoConfig .resetEror();
+  itemValidNewMestoConfig.resetEror();
   openPopup(cardPopup);
 }
 function closePopup(popup){ // функция закрытия всплывающего елемента
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
+  
 }
 function savePopapProfile (event) { // функция обрабочик кнопки сохранить
     event.preventDefault();
-      fio.textContent= fioValue.value;
-      hobby.textContent = hobbyValue.value;
-      closePopup(profilePopup);
-} 
+    fio.textContent= fioValue.value;
+    hobby.textContent = hobbyValue.value;
+    closePopup(profilePopup);
+  } 
 function generateCardPopap (event) { // функция обрабочик кнопки создать
   event.preventDefault();
   const newCard = {
@@ -108,17 +109,13 @@ function generateCardPopap (event) { // функция обрабочик кно
     }
     elementContainer.prepend(newItemCard(newCard));
     const form = event.currentTarget;
-    
-    itemValidNewMestoConfig.setButtonState(form); 
   closePopup(cardPopup);
 }
 
 function closeByEscape(e){//обрабочик нажатия Ecpase
-
   if(e.key === "Escape"){
     const popup = document.querySelector(".popup_opened");
     closePopup(popup);
-
   }
 }
 function validation(validation){

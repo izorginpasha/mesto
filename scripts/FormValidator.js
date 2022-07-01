@@ -4,7 +4,7 @@ export class FormValidator{ // класс создания валидности 
     this._config = config;
     this._form = form;
     this._button = form.querySelector(this._config.button);
-    this._spanList = form.querySelectorAll(this._config.span);
+    this._inputList = form.querySelectorAll(this._config.input);
   }
   enableValidation(){
     
@@ -13,13 +13,13 @@ export class FormValidator{ // класс создания валидности 
   
   
   }
-  _formCheckValidity(form){
-    const isValid = form.checkValidity();
+  _formCheckValidity(){
+    const isValid = this._form.checkValidity();
     return isValid;
   }
   _handelFormSubmit = (event)=>{//проверка валидности при отправке формы
     event.preventDefault();
-    this._formCheckValidity(this._form);
+    this._formCheckValidity();
   }
   _handelFormInput = (event)=>{//проверка валидности при вводе 
       const input = event.target;
@@ -39,10 +39,10 @@ export class FormValidator{ // класс создания валидности 
       }
 
   }
-  setButtonState(form){//Вкл или выкл кнопки
+  setButtonState(){//Вкл или выкл кнопки
     
     
-    if(this._formCheckValidity(form)){
+    if(this._formCheckValidity()){
       this._button.removeAttribute("disabled");
       this._button.classList.remove(this._config.buttonInvalid);
       this._button.classList.add(this._config.buttonValid);
@@ -57,11 +57,20 @@ export class FormValidator{ // класс создания валидности 
     
 
   }
-  resetEror(form){
-    this._spanList.forEach((formSpan) => {
-      formSpan.textContent="";
+  resetEror(){
+    this._inputList.forEach((formInput) => {
+    //  formInput.this._handelFormInput();
+    // formInput.setCustomValidity('u');
+    document.querySelector(this._config.input).setCustomValidity('');
+    console.log(formInput);
+    console.log(formInput.validationMessage);
+    this._setFieldErorr(formInput);
+    
+
+     
       });
       
+      this.setButtonState();
       
 
   }
