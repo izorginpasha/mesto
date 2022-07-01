@@ -26,20 +26,7 @@ import {Card} from './Card.js';
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-  // const validProfileConfig ={// обьекты для валидации 
-  //   form: '.popup__form[id="popupFormProfile"]',
-  //   button: '.popup__button[id="buttonSave"]' ,
-  //   buttonInvalid: 'popup__button_invalid',
-  //   buttonValid: 'popup__button_valid',
-  //   buttonTitle: 'popup__button-title_ivalid'
-  // }
-  // const validNewMestoConfig ={
-  //   form: '.popup__form[id="popupFormNewMesto"]',
-  //   button: '.popup__button[id="buttonNew"]' ,
-  //   buttonInvalid: 'popup__button_invalid',
-  //   buttonValid: 'popup__button_valid',
-  //   buttonTitle: 'popup__button-title_ivalid'
-  // }
+  
   const validConfig ={// обьекты для валидации 
     button: '.popup__button',
     buttonInvalid: 'popup__button_invalid',
