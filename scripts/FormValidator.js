@@ -31,14 +31,27 @@ export class FormValidator{ // класс создания валидности 
 
   }
   _setFieldErorr(input){//Текст ошибки под каждым полем
-      const span = this._form.querySelector(`#span-${input.name}`);
-      span.textContent = input.validationMessage;
+      this._spanAddEror(input.validationMessage, input);
+      
       if(input.validationMessage){
-      input.classList.add(this._config.popupErorClass);}else{
-        input.classList.remove(this._config.popupErorClass);
+      this._inputListAdd(input);
+    }else{
+      this._inputListRemove(input); 
       }
 
   }
+  _spanAddEror(textEror, input){
+    const span = this._form.querySelector(`#span-${input.name}`);
+    span.textContent = textEror;
+
+  }
+  _inputListAdd(input){
+    input.classList.add(this._config.popupErorClass);
+  }
+  _inputListRemove(input){
+    input.classList.remove(this._config.popupErorClass);
+  }
+
   setButtonState(){//Вкл или выкл кнопки
     
     
@@ -59,12 +72,11 @@ export class FormValidator{ // класс создания валидности 
   }
   resetEror(){
     this._inputList.forEach((formInput) => {
-    //  formInput.this._handelFormInput();
-    // formInput.setCustomValidity('u');
-    document.querySelector(this._config.input).setCustomValidity('');
+    this._inputListRemove(formInput);
+    this._spanAddEror("", formInput);
     console.log(formInput);
     console.log(formInput.validationMessage);
-    this._setFieldErorr(formInput);
+   
     
 
      

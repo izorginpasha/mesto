@@ -108,7 +108,7 @@ function generateCardPopap (event) { // функция обрабочик кно
     link: someInputLink.value
     }
     elementContainer.prepend(newItemCard(newCard));
-    const form = event.currentTarget;
+   
   closePopup(cardPopup);
 }
 

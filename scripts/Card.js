@@ -15,12 +15,12 @@
         const heart = this._elementItem.querySelector('.element-item__heart');
         heart.addEventListener('click',this._like);
         const basket = this._elementItem.querySelector('.element-item__basket');
-        basket.addEventListener('click',this._removeItem);
+        basket.addEventListener('click',()=>{this._removeItem(this._elementItem)});
         this._elementImage.addEventListener('click',this._openPopapImage);
         return this._elementItem;       
       }
-      _removeItem(){
-        document.querySelector('.element-item').remove();
+      _removeItem(item){
+       item.remove();
       }
       _like(event){//обрабочик лаика
         event.target.classList.toggle('element-item__heart_like');
