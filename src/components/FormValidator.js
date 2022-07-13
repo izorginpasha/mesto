@@ -74,12 +74,6 @@ export class FormValidator{ // класс создания валидности 
     this._inputList.forEach((formInput) => {
     this._inputListRemove(formInput);
     this._spanAddEror("", formInput);
-    console.log(formInput);
-    console.log(formInput.validationMessage);
-   
-    
-
-     
       });
       
       this.setButtonState();

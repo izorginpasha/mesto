@@ -1,5 +1,7 @@
 import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
+import {Section} from '../components/Section.js';
+import {PopupWithForm, Section} from '../components/PopupWithForm.js';
 const initialCards = [ // массив карточек
     {
       name: 'Архыз',
@@ -59,11 +61,14 @@ const hobby = document.querySelector('.profile__hobby');
 const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
 const itemValidProfileConfig = new FormValidator(validConfig,buttonSaveProfile);// создание экземпляра класса валидности, для формы редактирвания профиля
 const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );// создание экземпляра класса валидности, для формы добавления карточки
-function renderCard(data){//на каждыи элемент списка создаем карточку из заготовки
-  data.forEach((item)=> elementContainer.prepend(newItemCard(item)) ) 
+const selectorCardsTemplate = '#cards';
+
+
+function renderCard(){// передаем  массив
+  const section = new Section(initialCards, newItemCard, '.element__container');
+  section.renderItems(); 
 } 
  function newItemCard(item){// создание карточки
-  const selectorCardsTemplate = '#cards';
   const card = new Card(selectorCardsTemplate,item,openPopapImage);// создание экземпляра класса 
   return card.createCard();
 }
@@ -79,30 +84,40 @@ function openProfilePopup(){//функция создания окна редо�
   itemValidProfileConfig.resetEror();
   openPopup(profilePopup);
 }
-/// передать в card
-// function openPopapImage(event){ //функция открытия всплывающего блока картинки
-//   imagePopup.src =event.target.src;
-//   imagePopupTitle.textContent = event.target.alt;
-//   imagePopup.alt=event.target.alt;
-//   openPopup(windowImagePopup);
+function openPopapImage(event){ //функция открытия всплывающего блока картинки
+  imagePopup.src =event.target.src;
+  imagePopupTitle.textContent = event.target.alt;
+  imagePopup.alt=event.target.alt;
+  openPopup(windowImagePopup);
+}
+
+function openPopup(selectorPopup,sabmit){//функция создания окна добавления карточки
+  const popap = new PopupWithForm(selectorPopup,sabmit);
+  popap.open();
+}
+
+
+
+
+
+
+// function openAddCardPopup(selectorPopup,sabmit){//функция создания окна добавления карточки
+//   buttonNewCard.reset();
+//   itemValidNewMestoConfig.resetEror();
+//   openPopup(cardPopup);
 // }
-function openAddCardPopup(){//функция создания окна добавления карточки
-  buttonNewCard.reset();
-  itemValidNewMestoConfig.resetEror();
-  openPopup(cardPopup);
-}
-function closePopup(popup){ // функция закрытия всплывающего елемента
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
+// function closePopup(popup){ // функция закрытия всплывающего елемента
+//   popup.classList.remove('popup_opened');
+//   document.removeEventListener('keydown', closeByEscape);
   
-}
+// }
 ///     нужно передать popapForm
-// function savePopapProfile (event) { // функция обрабочик кнопки сохранить
-//     event.preventDefault();
-//     fio.textContent= fioValue.value;
-//     hobby.textContent = hobbyValue.value;
-//     closePopup(profilePopup);
-//   } 
+function savePopapProfile (event) { // функция обрабочик кнопки сохранить
+    event.preventDefault();
+    fio.textContent= fioValue.value;
+    hobby.textContent = hobbyValue.value;
+    closePopup(profilePopup);
+  } 
 function generateCardPopap (event) { // функция обрабочик кнопки создать
   event.preventDefault();
   const newCard = {
@@ -125,7 +140,7 @@ function validation(validation){
 }
  validation(itemValidProfileConfig);//включение валидации
  validation(itemValidNewMestoConfig);
- renderCard(initialCards);//создание карточек
+ renderCard();//создание карточек
 buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
 buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки

@@ -1,6 +1,6 @@
 
  export  class Card  { // класс создания карточки
-    constructor(selectorCardsTemplate, configCard,openPopapImage, handleCardClick){ 
+    constructor(selectorCardsTemplate, configCard, handleCardClick){ 
       this._handleCardClick = handleCardClick;
       this._selectorCardsTemplate = selectorCardsTemplate;
       this._configCard = configCard;
