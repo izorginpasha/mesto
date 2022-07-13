@@ -10,11 +10,11 @@ export class PopupWithForm extends Popup{
     _getInputValues(){//собирает данные полеи
         return this._popap.querySelectorAll('.popup__text');
     }
-    setEventListeners(){
+    setEventListeners(){// переопределяет родительскии метод добовляя сабмит
         super.setEventListeners();
         this._buttonForm.addEventListener('submit', sabmitForm);
     }
-    close(){
+    close(){// переопределяет родительскии метод добовляя ресет
         this._formPopup.reset();
         super.close();
     }

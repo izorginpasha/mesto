@@ -1,9 +1,10 @@
 
  export  class Card  { // класс создания карточки
-    constructor(selectorCardsTemplate, configCard,openPopapImage){ 
+    constructor(selectorCardsTemplate, configCard,openPopapImage, handleCardClick){ 
+      this._handleCardClick = handleCardClick;
       this._selectorCardsTemplate = selectorCardsTemplate;
       this._configCard = configCard;
-      this._openPopapImage = openPopapImage;
+      // this._openPopapImage = openPopapImage;
       this._cardsTemplate =  document.querySelector(this._selectorCardsTemplate).content; // заготовка верстки cards
       this._elementItem = this._cardsTemplate.querySelector('.element-item').cloneNode(true);
       this._elementImage = this._elementItem.querySelector('.element-item__image');
@@ -16,7 +17,7 @@
         heart.addEventListener('click',this._like);
         const basket = this._elementItem.querySelector('.element-item__basket');
         basket.addEventListener('click',()=>{this._removeItem(this._elementItem)});
-        this._elementImage.addEventListener('click',this._openPopapImage);
+        this._elementImage.addEventListener('click',this._handleCardClick);
         return this._elementItem;       
       }
       _removeItem(item){

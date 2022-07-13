@@ -79,12 +79,13 @@ function openProfilePopup(){//функция создания окна редо�
   itemValidProfileConfig.resetEror();
   openPopup(profilePopup);
 }
-function openPopapImage(event){ //функция открытия всплывающего блока картинки
-  imagePopup.src =event.target.src;
-  imagePopupTitle.textContent = event.target.alt;
-  imagePopup.alt=event.target.alt;
-  openPopup(windowImagePopup);
-}
+/// передать в card
+// function openPopapImage(event){ //функция открытия всплывающего блока картинки
+//   imagePopup.src =event.target.src;
+//   imagePopupTitle.textContent = event.target.alt;
+//   imagePopup.alt=event.target.alt;
+//   openPopup(windowImagePopup);
+// }
 function openAddCardPopup(){//функция создания окна добавления карточки
   buttonNewCard.reset();
   itemValidNewMestoConfig.resetEror();
@@ -95,12 +96,13 @@ function closePopup(popup){ // функция закрытия всплываю�
   document.removeEventListener('keydown', closeByEscape);
   
 }
-function savePopapProfile (event) { // функция обрабочик кнопки сохранить
-    event.preventDefault();
-    fio.textContent= fioValue.value;
-    hobby.textContent = hobbyValue.value;
-    closePopup(profilePopup);
-  } 
+///     нужно передать popapForm
+// function savePopapProfile (event) { // функция обрабочик кнопки сохранить
+//     event.preventDefault();
+//     fio.textContent= fioValue.value;
+//     hobby.textContent = hobbyValue.value;
+//     closePopup(profilePopup);
+//   } 
 function generateCardPopap (event) { // функция обрабочик кнопки создать
   event.preventDefault();
   const newCard = {
