@@ -6,9 +6,7 @@ export class Section{
     }
     
     renderItems(){//переберает массив вызывает для каждого елемента метод addItem
-        console.log("render2");
         this._initialArray.forEach(item => {
-            console.log(this._renderer(item));
             this.addItem(this._renderer(item));//передает отрисованныи элемент в addItem    
         });
     }

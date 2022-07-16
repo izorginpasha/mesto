@@ -4,7 +4,6 @@
       this._handleCardClick = handleCardClick;
       this._selectorCardsTemplate = selectorCardsTemplate;
       this._configCard = configCard;
-      // this._openPopapImage = openPopapImage;
       this._cardsTemplate =  document.querySelector(this._selectorCardsTemplate).content; // заготовка верстки cards
       this._elementItem = this._cardsTemplate.querySelector('.element-item').cloneNode(true);
       this._elementImage = this._elementItem.querySelector('.element-item__image');

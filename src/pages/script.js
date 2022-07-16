@@ -1,7 +1,7 @@
 import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
 import {Section} from '../components/Section.js';
-import {PopupWithForm, Section} from '../components/PopupWithForm.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
 const initialCards = [ // массив карточек
     {
       name: 'Архыз',
@@ -62,6 +62,7 @@ const elementContainer =  document.querySelector('.element__container');// по�
 const itemValidProfileConfig = new FormValidator(validConfig,buttonSaveProfile);// создание экземпляра класса валидности, для формы редактирвания профиля
 const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );// создание экземпляра класса валидности, для формы добавления карточки
 const selectorCardsTemplate = '#cards';
+const popupNewMesto = new PopupWithForm('#popupNewMesto', generateCardPopap);
 
 
 function renderCard(){// передаем  массив
@@ -73,27 +74,26 @@ function renderCard(){// передаем  массив
   return card.createCard();
 }
 
-function openPopup(popup){ //функция открытия всплывающего блока
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
-}
+// function openPopup(popup){ //функция открытия всплывающего блока
+//   popup.classList.add('popup_opened');
+//   document.addEventListener('keydown', closeByEscape);
+// }
 
-function openProfilePopup(){//функция создания окна редоктирования профиля
-  fioValue.value=fio.textContent;
-  hobbyValue.value=hobby.textContent;
-  itemValidProfileConfig.resetEror();
-  openPopup(profilePopup);
-}
+// function openProfilePopup(){//функция создания окна редоктирования профиля
+//   fioValue.value=fio.textContent;
+//   hobbyValue.value=hobby.textContent;
+//   itemValidProfileConfig.resetEror();
+//   openPopup(profilePopup);
+// }
 function openPopapImage(event){ //функция открытия всплывающего блока картинки
   imagePopup.src =event.target.src;
   imagePopupTitle.textContent = event.target.alt;
   imagePopup.alt=event.target.alt;
-  openPopup(windowImagePopup);
+  //openPopup(windowImagePopup); решить баг
 }
 
-function openPopup(selectorPopup,sabmit){//функция создания окна добавления карточки
-  const popap = new PopupWithForm(selectorPopup,sabmit);
-  popap.open();
+function openPopup(popup){//функция создания окна добавления карточки
+  popup.open();
 }
 
 
@@ -126,37 +126,37 @@ function generateCardPopap (event) { // функция обрабочик кно
     }
     elementContainer.prepend(newItemCard(newCard));
    
-  closePopup(cardPopup);
+  
 }
 
-function closeByEscape(e){//обрабочик нажатия Ecpase
-  if(e.key === "Escape"){
-    const popup = document.querySelector(".popup_opened");
-    closePopup(popup);
-  }
-}
+// function closeByEscape(e){//обрабочик нажатия Ecpase
+//   if(e.key === "Escape"){
+//     const popup = document.querySelector(".popup_opened");
+//     closePopup(popup);
+//   }
+// }
 function validation(validation){
   validation.enableValidation();
 }
  validation(itemValidProfileConfig);//включение валидации
  validation(itemValidNewMestoConfig);
  renderCard();//создание карточек
-buttonAdd.addEventListener('click',openAddCardPopup);// слушатель кнопки открытия окна добавления карточки
-buttonEdit.addEventListener('click',openProfilePopup); // слушатель кнопки открытия окна редактирования профиля 
-buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки
-buttonCloseProfilePopup.addEventListener('click', ()=>{closePopup(profilePopup)});//слушатель кнопки закрытия окна редактирования профиля
-buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(windowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
-buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
-buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
+buttonAdd.addEventListener('click',()=>{openPopup(popupNewMesto)});// слушатель кнопки открытия окна добавления карточки
+buttonEdit.addEventListener('click',()=>{openPopup('#popupProfile', savePopapProfile)}); // слушатель кнопки открытия окна редактирования профиля 
+// buttonCloseAddCard.addEventListener('click', ()=>{closePopup(cardPopup)});//слушатель кнопки закрытия окна добавления карточки
+// buttonCloseProfilePopup.addEventListener('click', ()=>{closePopup(profilePopup)});//слушатель кнопки закрытия окна редактирования профиля
+// buttonCloseProImagePopup.addEventListener('click', ()=>{closePopup(windowImagePopup)});//слушатель кнопки закрытия окна просмотра картинки
+// buttonSaveProfile.addEventListener('submit', savePopapProfile);// слушатель кнопки сохранить у окна редактирования профиля
+// buttonNewCard.addEventListener('submit',generateCardPopap);// слушатель кнопки создать у окна добавления карточки
 
-popupOverleyNewMesto.addEventListener('click',function(event){//слушатель оверлея
-  closePopup(document.querySelector(".popup_opened"));
-} );
-popupOverleyProfile.addEventListener('click',function(event){
-  closePopup(document.querySelector(".popup_opened"));
-} );
-popupOverleyImage.addEventListener('click',function(event){
-  closePopup(document.querySelector(".popup_opened"));
-} );
+// popupOverleyNewMesto.addEventListener('click',function(event){//слушатель оверлея
+//   closePopup(document.querySelector(".popup_opened"));
+// } );
+// popupOverleyProfile.addEventListener('click',function(event){
+//   closePopup(document.querySelector(".popup_opened"));
+// } );
+// popupOverleyImage.addEventListener('click',function(event){
+//   closePopup(document.querySelector(".popup_opened"));
+// } );
 
 
