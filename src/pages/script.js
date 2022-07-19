@@ -2,6 +2,7 @@ import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
 import {Section} from '../components/Section.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
+import { PopupWithmage } from '../components/PopupWithImage.js';
 const initialCards = [ // массив карточек
     {
       name: 'Архыз',
@@ -63,6 +64,7 @@ const itemValidProfileConfig = new FormValidator(validConfig,buttonSaveProfile);
 const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );// создание экземпляра класса валидности, для формы добавления карточки
 const selectorCardsTemplate = '#cards';
 const popupNewMesto = new PopupWithForm('#popupNewMesto', generateCardPopap);
+const popupImage = new PopupWithmage('#popupImage');
 
 
 function renderCard(){// передаем  массив
@@ -85,11 +87,8 @@ function renderCard(){// передаем  массив
 //   itemValidProfileConfig.resetEror();
 //   openPopup(profilePopup);
 // }
-function openPopapImage(event){ //функция открытия всплывающего блока картинки
-  imagePopup.src =event.target.src;
-  imagePopupTitle.textContent = event.target.alt;
-  imagePopup.alt=event.target.alt;
-  //openPopup(windowImagePopup); решить баг
+function openPopapImage(link,name){ //функция открытия всплывающего блока картинки
+  popupImage.open(link,name);
 }
 
 function openPopup(popup){//функция создания окна добавления карточки

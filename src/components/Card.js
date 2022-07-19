@@ -10,13 +10,13 @@
     }
      createCard(){// создание карточки
       this._elementImage.src = this._configCard.link;
-      this._elementImage.alt =this._configCard.name;
+      this._elementImage.alt =this._configCard.link;
       this._elementItem.querySelector('.element-item__title').textContent = this._configCard.name;
         const heart = this._elementItem.querySelector('.element-item__heart');
         heart.addEventListener('click',this._like);
         const basket = this._elementItem.querySelector('.element-item__basket');
         basket.addEventListener('click',()=>{this._removeItem(this._elementItem)});
-        this._elementImage.addEventListener('click',this._handleCardClick);
+        this._elementImage.addEventListener('click',()=>this._handleCardClick(this._configCard.link, this._configCard.name ));
         return this._elementItem;       
       }
       _removeItem(item){
