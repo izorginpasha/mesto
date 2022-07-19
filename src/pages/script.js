@@ -118,15 +118,12 @@ function savePopapProfile (event) { // функция обрабочик кно�
     hobby.textContent = hobbyValue.value;
     closePopup(profilePopup);
   } 
-function generateCardPopap (event) { // функция обрабочик кнопки создать
-  event.preventDefault();
+function generateCardPopap () { // функция обрабочик кнопки создать
   const newCard = {
     name: someInputName.value,
     link: someInputLink.value
     }
     elementContainer.prepend(newItemCard(newCard));
-   
-  
 }
 
 // function closeByEscape(e){//обрабочик нажатия Ecpase
@@ -138,8 +135,8 @@ function generateCardPopap (event) { // функция обрабочик кно
 function validation(validation){
   validation.enableValidation();
 }
- validation(itemValidProfileConfig);//включение валидации
- validation(itemValidNewMestoConfig);
+ //validation(itemValidProfileConfig);//включение валидации
+ //validation(itemValidNewMestoConfig);
  renderCard();//создание карточек
 buttonAdd.addEventListener('click',()=>{openPopup(popupNewMesto)});// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',()=>{openPopup('#popupProfile', savePopapProfile)}); // слушатель кнопки открытия окна редактирования профиля 

@@ -18,7 +18,6 @@ export class Popup{
     
     _handleEscClose(e){// метод закрытия по нажатию ESC
         if(e.key === "Escape"){
-            console.log("yes button");
             this.close();
           }
     }
