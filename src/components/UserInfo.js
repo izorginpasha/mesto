@@ -5,8 +5,9 @@ export class UserInfo{
     }
     getUserInfo(){
         const UserInfo = { profileName: "Жак-Ив Кусто", profileInfo: "Исследователь океана" };
+        return UserInfo;
     }
-    setUserInfo({profileName, profileInfo}){
+    setUserInfo(profileName, profileInfo){
         this._profileUser.textContent = profileName;
         this._profileUserInfo.textContent = profileInfo;
     }
