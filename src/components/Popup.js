@@ -4,16 +4,17 @@ export class Popup{
         this._popup= document.querySelector(this._popupSelector);// находим попап
         this._buttonClose = this._popup.querySelector('.popup__close'); // находим кнопку закрытия popup
         this._overlay = this._popup.querySelector('.popup__overlay');
+        this.setEventListeners= this.setEventListeners();
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
     
     open(){//метод открытия popup
         this._popup.classList.add('popup_opened');
-        this.setEventListeners();
-        document.addEventListener('keydown',this._handleEscClose.bind(this));
+        document.addEventListener('keydown',this._handleEscClose);
     }
     close(){// метод закрытия popup
         this._popup.classList.remove('popup_opened');
-        document.removeEventListener('keydown',this._handleEscClose.bind(this));
+        document.removeEventListener('keydown',this._handleEscClose);
     }
     
     _handleEscClose(e){// метод закрытия по нажатию ESC

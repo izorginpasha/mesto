@@ -5,8 +5,6 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import './index.css';
-import '../images/logo.svg';
-import '../images/image.jpg';
 const initialCards = [ // массив карточек
     {
       name: 'Архыз',
@@ -38,9 +36,11 @@ const validConfig ={// обьекты для валидации
     button: '.popup__button',
     buttonInvalid: 'popup__button_invalid',
     buttonValid: 'popup__button_valid',
+    buttonInvalidSpan: 'popup__button-title_ivalid',
     buttonTitle: 'popup__button-title_ivalid',
     popupErorClass: 'popup__text_error',
     input: '.popup__text',
+    popupSpan: '.popup__button-title',
 }
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -58,9 +58,9 @@ const popupNewMesto = new PopupWithForm('#popupNewMesto', generateCardPopap);
 const popupProfile = new PopupWithForm('#popupProfile', savePopapProfile);
 const popupImage = new PopupWithImage('#popupImage');
 const userInfo = new UserInfo({selectorUser:'.profile__fio',selectorUserInfo:'.profile__hobby'});
+const section = new Section(initialCards, newItemCard, '.element__container');
 
 function renderCard(){// передаем  массив
-  const section = new Section(initialCards, newItemCard, '.element__container');
   section.renderItems(); 
 } 
  function newItemCard(item){// создание карточки
@@ -70,32 +70,24 @@ function renderCard(){// передаем  массив
 function openPopapImage(link,name){ //функция открытия всплывающего блока картинки
   popupImage.open(link,name);
 }
-
-function openPopup(popup){//функция создания окна добавления карточки
-  popup.open();
-}
 function getPopapProfile ({profileName,profileInfo}) { // функция передачи данных в попап 
   fioValue.value =profileName;
   hobbyValue.value = profileInfo;
-
 } 
-function savePopapProfile () { // функция обрабочик кнопки сохранить
-  userInfo.setUserInfo(fioValue.value,hobbyValue.value);
+function savePopapProfile ({popupFio,popupHobby}) { // функция обрабочик кнопки сохранить
+  userInfo.setUserInfo(popupFio,popupHobby);
   } 
-function generateCardPopap () { // функция обрабочик кнопки создать
+function generateCardPopap ({popupName,popupLink}) { // функция обрабочик кнопки создать
   const newCard = {
-    name: someInputName.value,
-    link: someInputLink.value
+    name: popupName,
+    link: popupLink
     }
-    elementContainer.prepend(newItemCard(newCard));
+    section.addItem(newItemCard(newCard));
 }
-function validation(validation){
-  validation.enableValidation();
-}
- validation(itemValidProfileConfig);//включение валидации
- validation(itemValidNewMestoConfig);
+ itemValidProfileConfig.enableValidation();//включение валидации
+ itemValidNewMestoConfig.enableValidation();
  renderCard();//создание карточек
-buttonAdd.addEventListener('click',()=>{openPopup(popupNewMesto),popupNewMesto._getInputValues()});// слушатель кнопки открытия окна добавления карточки
-buttonEdit.addEventListener('click',()=>{openPopup(popupProfile),getPopapProfile(userInfo.getUserInfo())}); // слушатель кнопки открытия окна редактирования профиля 
+buttonAdd.addEventListener('click',()=>{popupNewMesto.open(),itemValidNewMestoConfig.resetEror()});// слушатель кнопки открытия окна добавления карточки
+buttonEdit.addEventListener('click',()=>{popupProfile.open(),getPopapProfile(userInfo.getUserInfo(),itemValidProfileConfig.resetEror())}); // слушатель кнопки открытия окна редактирования профиля 
 
 

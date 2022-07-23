@@ -11,7 +11,7 @@ export class Section{
         });
     }
     addItem(element){//принимает елемент массива и вставляет его в контеинер
-        this._conteiner.append(element);
+        this._conteiner.prepend(element);
     }
     
 }

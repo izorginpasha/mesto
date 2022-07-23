@@ -4,8 +4,8 @@ export class UserInfo{
         this._profileUserInfo = document.querySelector(selectorUserInfo);
     }
     getUserInfo(){
-        const UserInfo = { profileName: "Жак-Ив Кусто", profileInfo: "Исследователь океана" };
-        return UserInfo;
+        const userInfo = { profileName: this._profileUser.textContent, profileInfo: this._profileUserInfo.textContent };
+        return userInfo;
     }
     setUserInfo(profileName, profileInfo){
         this._profileUser.textContent = profileName;
