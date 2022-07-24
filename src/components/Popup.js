@@ -4,7 +4,6 @@ export class Popup{
         this._popup= document.querySelector(this._popupSelector);// находим попап
         this._buttonClose = this._popup.querySelector('.popup__close'); // находим кнопку закрытия popup
         this._overlay = this._popup.querySelector('.popup__overlay');
-        this.setEventListeners= this.setEventListeners();
         this._handleEscClose = this._handleEscClose.bind(this);
     }
     

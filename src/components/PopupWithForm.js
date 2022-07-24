@@ -1,5 +1,5 @@
 import { Popup } from "./Popup.js";
-import { FormValidator } from "./FormValidator.js";
+
 
 export class PopupWithForm extends Popup{
     constructor(popupSelector, submitForm){// принимает селектор класса popup
@@ -7,7 +7,7 @@ export class PopupWithForm extends Popup{
         this._submitForm = submitForm;
         this._buttonForm = this._popup.querySelector('.popup__button');
         this._formPopup = this._popup.querySelector('.popup__form');
-        this._setFormHandler = this._formPopup.addEventListener('submit',this._submitHandler.bind(this));
+        this._submitHandler = this._submitHandler.bind(this);
         this._inputList = this._popup.querySelectorAll('.popup__text');
     }
     _getInputValues(){//собирает данные полеи
@@ -21,7 +21,7 @@ export class PopupWithForm extends Popup{
         
     setEventListeners(){// переопределяет родительскии метод добовляя сабмит
         super.setEventListeners();
-        this._setFormHandler;
+        this._formPopup.addEventListener('submit',this._submitHandler);
     }
 
     _submitHandler(evt) {

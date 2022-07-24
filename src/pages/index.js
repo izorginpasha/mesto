@@ -59,7 +59,8 @@ const popupProfile = new PopupWithForm('#popupProfile', savePopapProfile);
 const popupImage = new PopupWithImage('#popupImage');
 const userInfo = new UserInfo({selectorUser:'.profile__fio',selectorUserInfo:'.profile__hobby'});
 const section = new Section(initialCards, newItemCard, '.element__container');
-
+popupNewMesto.setEventListeners();
+popupProfile.setEventListeners();
 function renderCard(){// передаем  массив
   section.renderItems(); 
 } 
