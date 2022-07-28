@@ -1,9 +1,0 @@
-.element{
-    max-width: 100%;
-    padding: 0px 0px 66px 0px;
-}
-@media screen and (max-width: 400px){
-    .element{
-        padding: 0px 0px 48px 0px;
-}
-}
