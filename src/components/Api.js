@@ -61,16 +61,15 @@ export class Api {
       });
     }
     setCard(name,link){
-      console.log(name,link);
       return fetch(`${this.baseUrl}/cards`, {
-        method: 'PATCH', 
+        method: 'POST', 
         headers: {
           authorization: this.authorization,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: '`${name}`',
-          link: `https://www.onetwotrip.com/ru/blog/wp-content/uploads/2016/10/caribbean-island.jpg`
+          name: `${name}`,
+          link: `${link}`
         })
       })
       .then(res => {

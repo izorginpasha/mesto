@@ -3,6 +3,7 @@ export class UserInfo{
         this._profileUser = document.querySelector(selectorUser);
         this._profileUserInfo = document.querySelector(selectorUserInfo);
         this._selectorUserAvatar = document.querySelector(selectorUserAvatar);
+
     }
     getUserInfo(){
         const userInfo = { profileName: this._profileUser.textContent, profileInfo: this._profileUserInfo.textContent };
@@ -12,6 +13,7 @@ export class UserInfo{
         this._profileUser.textContent = name;
         this._profileUserInfo.textContent = about;
         this._selectorUserAvatar.url = avatar;
+        
 
     }
 

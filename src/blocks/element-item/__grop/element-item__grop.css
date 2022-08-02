@@ -1,0 +1,6 @@
+.element-item__grop{
+    width: 22px;
+    height: 35px;
+    display: grid;
+    gap: 3px;
+}

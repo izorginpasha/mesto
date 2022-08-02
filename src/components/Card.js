@@ -7,6 +7,8 @@
       this._cardsTemplate =  document.querySelector(this._selectorCardsTemplate).content; // заготовка верстки cards
       this._elementItem = this._cardsTemplate.querySelector('.element-item').cloneNode(true);
       this._elementImage = this._elementItem.querySelector('.element-item__image');
+      this._likeNumber = this._elementItem.querySelector('.element-item__number-like');
+      this._like= this._like.bind(this);
     }
      createCard(){// создание карточки
       this._elementImage.src = this._configCard.link;
@@ -24,6 +26,8 @@
       }
       _like(event){//обрабочик лаика
         event.target.classList.toggle('element-item__heart_like');
+        console.log(this._configCard);
+        this._likeNumber.textContent=this._configCard.likes.length;
       }
 }
 

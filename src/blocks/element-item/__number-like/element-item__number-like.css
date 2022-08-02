@@ -1,0 +1,11 @@
+.element-item__number-like{
+    font-family:'Inter','Arial', sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:13px;
+    line-height:16px;
+    color:#000000;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}

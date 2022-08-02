@@ -73,10 +73,24 @@
             <img class="element-item__image">
             <div class="element-item__content">
                 <h2 class="element-item__title"></h2>
-                <button class="element-item__heart" type="button"></button>
+                <div class="element-item__grop">
+                    <button class="element-item__heart" type="button"></button>
+                    <p class="element-item__number-like">0</p>
+                </div>
+                
             </div>
         </li>
     </template> 
+    <div class="popup" id="popupDelCard">
+        <div class="popup__overlay"></div>
+        <div class="popup__container">
+            <form class="popup__form" id="popupFormDelCard" name="popup-del-card">
+                <h3 class="popup__title popup__title_del">Вы уверены?</h3>
+                <button class="popup__button" type="submit" id="buttonDel"><span class="popup__button-title">Да</span></button>
+            </form>
+            <button class="popup__close" aria-label="close" type="button"></button>
+        </div>
+    </div>
     
     
     

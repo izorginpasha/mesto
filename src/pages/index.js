@@ -57,9 +57,11 @@ const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );/
 const selectorCardsTemplate = '#cards';
 const popupNewMesto = new PopupWithForm('#popupNewMesto', generateCardPopap);
 const popupProfile = new PopupWithForm('#popupProfile', savePopapProfile);
+const popupDelCard = new PopupWithForm('#popupDelCard', savePopapProfile);
 const popupImage = new PopupWithImage('#popupImage');
 const userInfo = new UserInfo({selectorUser:'.profile__fio',selectorUserInfo:'.profile__hobby',selectorUserAvatar:".profile__avatar"});
 //const section = new Section(initialCards, newItemCard, '.element__container');
+let section;
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46',
   headers: {
@@ -68,7 +70,7 @@ const api = new Api({
   }
 });
 function renderCard(initialCards){// передаем  массив
-  const section = new Section(initialCards, newItemCard, '.element__container');
+   section = new Section(initialCards, newItemCard, '.element__container');
   section.renderItems(); 
 } 
  function newItemCard(item){// создание карточки
@@ -94,20 +96,16 @@ function savePopapProfile ({popupFio,popupHobby}) { // функция обраб
   
   } 
 function generateCardPopap ({popupName,popupLink}) { // функция обрабочик кнопки создать
-  // const newCard = {
-  //   name: popupName,
-  //   link: popupLink
-  //   }
-  console.log(popupName,popupLink);
+  
     api.setCard(popupName,popupLink).then((result) => {
-      console.log(result);
+     section.addItem(newItemCard(result))
     // userInfo.setUserInfo(result); // добавляем результат запроса на страницу
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     });
 }
-function userProfile(){
+function userProfile(){//заполнение данных профиля
 api.getUser().then((result) => {
  userInfo.setUserInfo(result); // добавляем результат запроса на страницу
 })
@@ -116,7 +114,7 @@ api.getUser().then((result) => {
 }); 
 
 }
-function getCards(){
+function getCards(){//создание карточек
   api.getInitialCards().then((result) => {
     renderCard(result); // добавляем результат запроса на страницу
   })
@@ -125,15 +123,20 @@ function getCards(){
   }); 
   
   }
+function yes () {// согласие на удаление карточки
+ 
+}
 
 popupNewMesto.setEventListeners();//добавляем слушатели окна добавления карточки
 popupProfile.setEventListeners();//добавляем слушатели окна редае
+popupDelCard.setEventListeners();//добавляем слушатели окна удаления карт очки
+popupDelCard.open();
  itemValidProfileConfig.enableValidation();//включение валидации
  itemValidNewMestoConfig.enableValidation();
  
  userProfile();//заполнение данных профиля
  getCards();
- //renderCard();//создание карточек
+ 
 buttonAdd.addEventListener('click',()=>{popupNewMesto.open(),itemValidNewMestoConfig.resetEror()});// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',()=>{popupProfile.open(),getPopapProfile(userInfo.getUserInfo(),itemValidProfileConfig.resetEror())}); // слушатель кнопки открытия окна редактирования профиля 
 
