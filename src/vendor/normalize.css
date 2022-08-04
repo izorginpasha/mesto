@@ -21,7 +21,7 @@
  */
 
 body {
-  margin: 0;
+  margin: 0; /* 1 */
 }
 
 /**
@@ -29,7 +29,7 @@ body {
  */
 
 main {
-  display: block;
+  display: block; /* 1 */
 }
 
 /**
@@ -38,8 +38,8 @@ main {
  */
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  font-size: 2em; /* 1 */
+  margin: 0.67em 0; /* 1 */
 }
 
 /* Grouping content
@@ -74,7 +74,7 @@ pre {
  */
 
 a {
-  background-color: transparent;
+  background-color: transparent; /* 1 */
 }
 
 /**
@@ -84,7 +84,6 @@ a {
 
 abbr[title] {
   border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
 }
 
@@ -94,7 +93,7 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: bolder; /* 1 */
 }
 
 /**
@@ -114,7 +113,7 @@ samp {
  */
 
 small {
-  font-size: 80%;
+  font-size: 80%; /* 1 */
 }
 
 /**
@@ -124,18 +123,18 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+  font-size: 75%; /* 1 */
+  line-height: 0; /* 1 */
+  position: relative; /* 1 */
+  vertical-align: baseline; /* 1 */
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25em; /* 1 */
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5em; /* 1 */
 }
 
 /* Embedded content
@@ -146,7 +145,7 @@ sup {
  */
 
 img {
-  border-style: none;
+  border-style: none; /* 1 */
 }
 
 /* Forms
@@ -175,7 +174,7 @@ textarea {
 
 button,
 input { /* 1 */
-  overflow: visible;
+  overflow: visible; /* 1 */
 }
 
 /**
@@ -185,7 +184,7 @@ input { /* 1 */
 
 button,
 select { /* 1 */
-  text-transform: none;
+  text-transform: none; /* 1 */
 }
 
 /**
@@ -196,7 +195,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  -webkit-appearance: button; /* 1 */
 }
 
 /**
@@ -207,8 +206,8 @@ button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+  border-style: none; /* 1 */
+  padding: 0; /* 1 */
 }
 
 /**
@@ -219,7 +218,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 1px dotted ButtonText; /* 1 */
 }
 
 /**
@@ -227,7 +226,7 @@ button:-moz-focusring,
  */
 
 fieldset {
-  padding: 0.35em 0.75em 0.625em;
+  padding: 0.35em 0.75em 0.625em; /* 1 */
 }
 
 /**
@@ -251,7 +250,7 @@ legend {
  */
 
 progress {
-  vertical-align: baseline;
+  vertical-align: baseline; /* 1 */
 }
 
 /**
@@ -259,7 +258,7 @@ progress {
  */
 
 textarea {
-  overflow: auto;
+  overflow: auto; /* 1 */
 }
 
 /**
@@ -297,7 +296,7 @@ textarea {
  */
 
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* 1 */
 }
 
 /**
@@ -318,7 +317,7 @@ textarea {
  */
 
 details {
-  display: block;
+  display: block; /* 1 */
 }
 
 /*
@@ -326,7 +325,7 @@ details {
  */
 
 summary {
-  display: list-item;
+  display: list-item; /* 1 */
 }
 
 /* Misc
@@ -337,7 +336,7 @@ summary {
  */
 
 template {
-  display: none;
+  display: none; /* 1 */
 }
 
 /**
@@ -345,5 +344,5 @@ template {
  */
 
 [hidden] {
-  display: none;
+  display: none; /* 1 */
 }
