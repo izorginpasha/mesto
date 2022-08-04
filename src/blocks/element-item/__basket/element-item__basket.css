@@ -1,4 +1,5 @@
 .element-item__basket{
+    display: none;
     width: 18px;
     height: 19px;
     position: absolute;

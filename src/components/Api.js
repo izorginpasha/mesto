@@ -5,7 +5,7 @@ export class Api {
       this.authorization = this.headers.authorization;
     }
   
-    getInitialCards() {
+    getInitialCards() {// загрузка карточек
       return fetch(`${this.baseUrl}/cards`, {
           
         headers: {
@@ -22,7 +22,7 @@ export class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
       });
     }
-    getUser(){
+    getUser(){//получение данных профиля
       return fetch(`${this.baseUrl}/users/me`, {
           
         headers: {
@@ -39,7 +39,7 @@ export class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
       });
     }
-    setUserProfile(name,about){
+    setUserProfile(name,about){ // передача данных профиля
       return fetch(`${this.baseUrl}/users/me`, {
         method: 'PATCH', 
         headers: {
@@ -60,7 +60,7 @@ export class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
       });
     }
-    setCard(name,link){
+    setCard(name,link){ // запрос на добавление карточки
       return fetch(`${this.baseUrl}/cards`, {
         method: 'POST', 
         headers: {
@@ -80,6 +80,61 @@ export class Api {
       // если ошибка, отклоняем промис
       return Promise.reject(`Ошибка: ${res.status}`);
       });
+      
+    }
+    delCard(idCard){ //запос на удаление карточки
+      return fetch(`${this.baseUrl}/cards/${idCard}`, {
+        method: 'DELETE', 
+        headers: {
+          authorization: this.authorization,
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(res => {
+        if (res.ok) {
+        return res.json();
+        }
+
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+      });
+      
+    }
+    like(idCard){ // запрос на добавление лайка
+      return fetch(`${this.baseUrl}/cards/${idCard}/likes`, {
+        method: 'PUT', 
+        headers: {
+          authorization: this.authorization,
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(res => {
+        if (res.ok) {
+        return res.json();
+        }
+
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+      });
+
+    }
+    delLike(idCard){ // запрос на добавление лайка
+      return fetch(`${this.baseUrl}/cards/${idCard}/likes`, {
+        method: 'DELETE', 
+        headers: {
+          authorization: this.authorization,
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(res => {
+        if (res.ok) {
+        return res.json();
+        }
+
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+      });
+
     }
 
 
