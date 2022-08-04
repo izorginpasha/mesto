@@ -17,12 +17,11 @@
      createCard(){// создание карточки
       this._elementItem.id = this._configCard._id;
       this._elementImage.src = this._configCard.link;
-      this._elementImage.alt =this._configCard.link;
+      this._elementImage.alt =this._configCard.name;
       this._elementItem.querySelector('.element-item__title').textContent = this._configCard.name;
         const heart = this._elementItem.querySelector('.element-item__heart');
         heart.addEventListener('click',this._like);
         const basket = this._elementItem.querySelector('.element-item__basket');
-       
         if(this._configCard.owner.name===this._userInfo.name){
           basket.classList.add('element-item__basket_open');
           basket.addEventListener('click',()=>{this.handleCardClickDel(this._configCard)});

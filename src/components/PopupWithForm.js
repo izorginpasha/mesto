@@ -9,7 +9,8 @@ export class PopupWithForm extends Popup{
         this._formPopup = this._popup.querySelector('.popup__form');
         this._submitHandler = this._submitHandler.bind(this);
         this._inputList = this._popup.querySelectorAll('.popup__text');
-    }
+        this.buttonSpan =  this._buttonForm.querySelector('.popup__button-title');
+    };
     _getInputValues(){//собирает данные полеи
         this.inputValue ={};
         this._inputList.forEach(item => {
@@ -26,8 +27,9 @@ export class PopupWithForm extends Popup{
 
     _submitHandler(evt) {
         evt.preventDefault();
-        this._submitForm( this._getInputValues());
-        this.close();
+       
+        this.buttonSpan.textContent = "Сохраниение...";
+        this._submitForm( this._getInputValues());  
     }
     close(evt){// переопределяет родительскии метод добовляя ресет
         this._formPopup.reset();

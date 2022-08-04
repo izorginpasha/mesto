@@ -135,6 +135,27 @@ export class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
       });
 
+
+    }
+    setUserAvatar(avatar){ // передача данных аватара
+      return fetch(`${this.baseUrl}/users/me/avatar`, {
+        method: 'PATCH', 
+        headers: {
+          authorization: this.authorization,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          avatar: `${avatar}`
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+        return res.json();
+        }
+
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+      });
     }
 
 

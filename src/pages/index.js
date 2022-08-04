@@ -21,16 +21,18 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonSaveProfile = document.querySelector('#popupFormProfile');
 const buttonNewCard = document.querySelector('#popupFormNewMesto');
-const someInputName = document.querySelector('#popupName');
-const someInputLink = document.querySelector('#popupLink');
 const fioValue = document.querySelector('#popupFio');
 const hobbyValue = document.querySelector('#popupHobby');
-const elementContainer =  document.querySelector('.element__container');// получаем контеинер для вставки заготовки
+const AvatarForm = document.querySelector('#popupFormNewAvatar');
+const buttonAvatarEdit = document.querySelector('.profile__overlay');
+const button = document.querySelector('.popup__button');
 const itemValidProfileConfig = new FormValidator(validConfig,buttonSaveProfile);// создание экземпляра класса валидности, для формы редактирвания профиля
 const itemValidNewMestoConfig = new FormValidator(validConfig, buttonNewCard );// создание экземпляра класса валидности, для формы добавления карточки
+const itemValidNewAvatarConfig = new FormValidator(validConfig, AvatarForm );
 const selectorCardsTemplate = '#cards';
 const popupNewMesto = new PopupWithForm('#popupNewMesto', generateCardPopap);
 const popupProfile = new PopupWithForm('#popupProfile', savePopapProfile);
+const popupNewAvatar = new PopupWithForm('#popupNewAvatar', newAvatarEdit);
 const popupDelCard = new PopupWithDel('#popupDelCard',delCard);
 const popupImage = new PopupWithImage('#popupImage');
 const userInfo = new UserInfo({selectorUser:'.profile__fio',selectorUserInfo:'.profile__hobby',selectorUserAvatar:".profile__avatar"});
@@ -62,17 +64,21 @@ function getPopapProfile ({profileName,profileInfo}) { // функция пер�
   fioValue.value =profileName;
   hobbyValue.value = profileInfo;
 } 
-function savePopapProfile ({popupFio,popupHobby}) { // функция обрабочик кнопки сохранить
+function savePopapProfile ({popupFio,popupHobby,button}) { // функция обрабочик кнопки сохранить
+let i =false;
   api.setUserProfile(popupFio,popupHobby).then((result) => {
-    console.log(result);
    userInfo.setUserInfo(result); // добавляем результат запроса на страницу
   })
   .catch((err) => {
     console.log(err); // выведем ошибку в консоль
-  });
+  })
   
+  .finally(()=>{ popupProfile.buttonSpan.textContent="Сохранить";
+  popupProfile.close();
+}) ;
   
   } 
+
 function generateCardPopap ({popupName,popupLink}) { // функция обрабочик кнопки создать
   
     api.setCard(popupName,popupLink).then((result) => {
@@ -80,7 +86,21 @@ function generateCardPopap ({popupName,popupLink}) { // функция обра�
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
-    });
+    })
+    .finally(()=>{ popupNewMesto.buttonSpan.textContent="Сохранить";
+    popupNewMesto.close();
+  }) ;
+}
+function newAvatarEdit({popupLink}) { // обновление аватара
+  api.setUserAvatar(popupLink).then((result) => {
+    userInfo.setUserInfo(result); // добавляем результат запроса на страницу
+   })
+   .catch((err) => {
+     console.log(err); // выведем ошибку в консоль
+   }).finally(()=>{ popupNewAvatar.buttonSpan.textContent="Сохранить";
+   popupNewAvatar.close();
+ }) ; 
+
 }
 function userProfile(){//заполнение данных профиля
 api.getUser().then((result) => {
@@ -102,8 +122,6 @@ function getCards(){//создание карточек
   }
 function delCard(cardId){//удаление по ID
   api.delCard(cardId).then((result) => {
-    console.log(result);
-   
   })
   .catch((err) => {
     console.log(err); // выведем ошибку в консоль
@@ -128,15 +146,19 @@ function delLike(cardId){
     console.log(err); // выведем ошибку в консоль
   });
 }
+
 popupNewMesto.setEventListeners();//добавляем слушатели окна добавления карточки
 popupProfile.setEventListeners();//добавляем слушатели окна редае
 popupImage.setEventListeners();//добавляем слушатели окна картинки
+popupNewAvatar.setEventListeners();//добавляем слушатели окна avatar
  itemValidProfileConfig.enableValidation();//включение валидации
  itemValidNewMestoConfig.enableValidation();
+ itemValidNewAvatarConfig.enableValidation();
+
  
  userProfile();//заполнение данных профиля
  getCards();
 buttonAdd.addEventListener('click',()=>{popupNewMesto.open(),itemValidNewMestoConfig.resetEror()});// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',()=>{popupProfile.open(),getPopapProfile(userInfo.getUserInfo(),itemValidProfileConfig.resetEror())}); // слушатель кнопки открытия окна редактирования профиля 
-
+buttonAvatarEdit.addEventListener('click',()=>{popupNewAvatar.open(),itemValidNewAvatarConfig.resetEror()});
 

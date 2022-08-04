@@ -14,7 +14,7 @@ export class UserInfo{
         Object.assign(this._user,user);
         this._profileUser.textContent = user.name;
         this._profileUserInfo.textContent = user.about;
-        this._selectorUserAvatar.url = user.avatar;
+        this._selectorUserAvatar.src = user.avatar;
         
 
     }
