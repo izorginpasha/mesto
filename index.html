@@ -12,7 +12,11 @@
         </header>
         <main class="content">
             <section class="profile">
+
+                <div class="profile__block">
                 <img class="profile__avatar" src="74c3c0fb802dcfa83abb.jpg" alt="Фото профиля">
+                <div class="profile__overlay"></div>
+                     </div>
                 <div class="profile__info" >
                     <div class="profile__container">
                         <h1 class="profile__fio">Жак-Ив Кусто</h1>
@@ -68,15 +72,41 @@
         </div>
     </div>
     <template id="cards">
-        <li class="element-item">
+        <li class="element-item" id="">
             <button class="element-item__basket" aria-label="delete" type="button"></button>
             <img class="element-item__image">
             <div class="element-item__content">
                 <h2 class="element-item__title"></h2>
-                <button class="element-item__heart" type="button"></button>
+                <div class="element-item__grop">
+                    <button class="element-item__heart" type="button"></button>
+                    <p class="element-item__number-like">0</p>
+                </div>
+                
             </div>
         </li>
     </template> 
+    <div class="popup" id="popupDelCard">
+        <div class="popup__overlay"></div>
+        <div class="popup__container">
+            <form class="popup__form" id="popupFormDelCard" name="popup-del-card">
+                <h3 class="popup__title popup__title_del">Вы уверены?</h3>
+                <button class="popup__button" type="submit" id="buttonDel"><span class="popup__button-title">Да</span></button>
+            </form>
+            <button class="popup__close" aria-label="close" type="button"></button>
+        </div>
+    </div>
+    <div class="popup" id="popupNewAvatar">
+        <div class="popup__overlay"></div>
+        <div class="popup__container">
+            <form class="popup__form" id="popupFormNewAvatar" name="popup-del-card">
+                <h3 class="popup__title popup__title_avatar">Обновить аватар</h3>
+                <input class="popup__text" type="url" id="popupLink" name="popup-Link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="span-popup-Link"></span>
+                <button class="popup__button popup__button_avatar" type="submit" id="buttonAvatarEdit"><span class="popup__button-title">Сохранить</span></button>
+            </form>
+            <button class="popup__close" aria-label="close" type="button"></button>
+        </div>
+    </div>
     
     
     
