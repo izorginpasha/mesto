@@ -5,8 +5,8 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
-import './index.css';
 import { PopupWithDel } from '../components/PopupWithDel.js';
+import './index.css';
 const validConfig ={// обьекты для валидации 
     button: '.popup__button',
     buttonInvalid: 'popup__button_invalid',
