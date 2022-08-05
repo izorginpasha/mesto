@@ -138,6 +138,7 @@ export class Api {
 
     }
     setUserAvatar(avatar){ // передача данных аватара
+      console.log(avatar);
       return fetch(`${this.baseUrl}/users/me/avatar`, {
         method: 'PATCH', 
         headers: {

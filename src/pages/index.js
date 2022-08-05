@@ -91,8 +91,10 @@ function generateCardPopap ({popupName,popupLink}) { // функция обра�
     popupNewMesto.close();
   }) ;
 }
-function newAvatarEdit({popupLink}) { // обновление аватара
-  api.setUserAvatar(popupLink).then((result) => {
+function newAvatarEdit({popupLinkAvatar}) { // обновление аватара
+  console.log(popupLinkAvatar);
+  api.setUserAvatar(popupLinkAvatar).then((result) => {
+  
     userInfo.setUserInfo(result); // добавляем результат запроса на страницу
    })
    .catch((err) => {
@@ -153,12 +155,12 @@ popupImage.setEventListeners();//добавляем слушатели окна 
 popupNewAvatar.setEventListeners();//добавляем слушатели окна avatar
  itemValidProfileConfig.enableValidation();//включение валидации
  itemValidNewMestoConfig.enableValidation();
- itemValidNewAvatarConfig.enableValidation();
+ //itemValidNewAvatarConfig.enableValidation();
 
  
  userProfile();//заполнение данных профиля
  getCards();
 buttonAdd.addEventListener('click',()=>{popupNewMesto.open(),itemValidNewMestoConfig.resetEror()});// слушатель кнопки открытия окна добавления карточки
 buttonEdit.addEventListener('click',()=>{popupProfile.open(),getPopapProfile(userInfo.getUserInfo(),itemValidProfileConfig.resetEror())}); // слушатель кнопки открытия окна редактирования профиля 
-buttonAvatarEdit.addEventListener('click',()=>{popupNewAvatar.open(),itemValidNewAvatarConfig.resetEror()});
+buttonAvatarEdit.addEventListener('click',()=>{popupNewAvatar.open()});
 

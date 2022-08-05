@@ -16,7 +16,7 @@ export class PopupWithForm extends Popup{
         this._inputList.forEach(item => {
             this.inputValue[item.id] = item.value ; 
         });
-
+       console.log(this.inputValue);
         return this.inputValue;
     }
         
@@ -27,7 +27,6 @@ export class PopupWithForm extends Popup{
 
     _submitHandler(evt) {
         evt.preventDefault();
-       
         this.buttonSpan.textContent = "Сохраниение...";
         this._submitForm( this._getInputValues());  
     }
