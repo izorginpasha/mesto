@@ -4,7 +4,16 @@ export class Api {
       this.headers = headers;
       this.authorization = this.headers.authorization;
     }
-  
+    _checkResponse(res) {
+      
+        if (res.ok) {
+        return res.json();
+        }
+
+      // если ошибка, отклоняем промис
+      return Promise.reject(`Ошибка: ${res.status}`);
+      
+  }
     getInitialCards() {// загрузка карточек
       return fetch(`${this.baseUrl}/cards`, {
           
@@ -13,14 +22,7 @@ export class Api {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
     }
     getUser(){//получение данных профиля
       return fetch(`${this.baseUrl}/users/me`, {
@@ -30,14 +32,7 @@ export class Api {
           'Content-Type': 'application/json'
         }
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
     }
     setUserProfile(name,about){ // передача данных профиля
       return fetch(`${this.baseUrl}/users/me`, {
@@ -51,14 +46,7 @@ export class Api {
           about: `${about}`
         })
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
     }
     setCard(name,link){ // запрос на добавление карточки
       return fetch(`${this.baseUrl}/cards`, {
@@ -72,14 +60,7 @@ export class Api {
           link: `${link}`
         })
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
       
     }
     delCard(idCard){ //запос на удаление карточки
@@ -90,14 +71,7 @@ export class Api {
           'Content-Type': 'application/json'
         },
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
       
     }
     like(idCard){ // запрос на добавление лайка
@@ -108,14 +82,7 @@ export class Api {
           'Content-Type': 'application/json'
         },
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
 
     }
     delLike(idCard){ // запрос на добавление лайка
@@ -126,19 +93,11 @@ export class Api {
           'Content-Type': 'application/json'
         },
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
 
 
     }
     setUserAvatar(avatar){ // передача данных аватара
-      console.log(avatar);
       return fetch(`${this.baseUrl}/users/me/avatar`, {
         method: 'PATCH', 
         headers: {
@@ -149,14 +108,7 @@ export class Api {
           avatar: `${avatar}`
         })
       })
-      .then(res => {
-        if (res.ok) {
-        return res.json();
-        }
-
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._checkResponse)
     }
 
 

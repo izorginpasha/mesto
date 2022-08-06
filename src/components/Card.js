@@ -13,30 +13,33 @@
       this._likeNumber = this._elementItem.querySelector('.element-item__number-like');
       this._like= this._like.bind(this);
       this._userInfo=userInfo;
+      this._setEventListeners=this._setEventListeners.bind(this);
+      this._heart = this._elementItem.querySelector('.element-item__heart');
+      this._basket = this._elementItem.querySelector('.element-item__basket');  
     }
      createCard(){// создание карточки
       this._elementItem.id = this._configCard._id;
       this._elementImage.src = this._configCard.link;
       this._elementImage.alt =this._configCard.name;
       this._elementItem.querySelector('.element-item__title').textContent = this._configCard.name;
-        const heart = this._elementItem.querySelector('.element-item__heart');
-        heart.addEventListener('click',this._like);
-        const basket = this._elementItem.querySelector('.element-item__basket');
+      this._setEventListeners();
+      return this._elementItem;
+      }
+      _setEventListeners(){
+        this._heart.addEventListener('click',this._like);
         if(this._configCard.owner.name===this._userInfo.name){
-          basket.classList.add('element-item__basket_open');
-          basket.addEventListener('click',()=>{this.handleCardClickDel(this._configCard)});
+          this._basket.classList.add('element-item__basket_open');
+          this._basket.addEventListener('click',()=>{this.handleCardClickDel(this._configCard)});
         }
-
         this._elementImage.addEventListener('click',()=>this._handleCardClick(this._configCard.link, this._configCard.name ));
         this._likeNumber.textContent=this._configCard.likes.length;
-        return this._elementItem;       
       }
       _like(event){//обрабочик лаика
-        event.target.classList.toggle('element-item__heart_like');
-        if(event.target.classList.contains('element-item__heart_like')){
-          this._likeApi(this._elementItem.id);
+        
+        if(!event.target.classList.contains('element-item__heart_like')){
+          this._likeApi(this._elementItem.id)
         }else{
-          this._delLaike(this._elementItem.id);
+          this._delLaike(this._elementItem.id)
         }
       }
 }
