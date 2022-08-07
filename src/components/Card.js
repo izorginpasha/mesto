@@ -23,6 +23,13 @@
       this._elementImage.alt =this._configCard.name;
       this._elementItem.querySelector('.element-item__title').textContent = this._configCard.name;
       this._setEventListeners();
+       //console.log(this._configCard.likes);
+      this._configCard.likes.forEach(item => {
+        
+        if(item.name===this._userInfo.name){
+          this._heart.classList.add('element-item__heart_like');
+        }
+      });
       return this._elementItem;
       }
       _setEventListeners(){

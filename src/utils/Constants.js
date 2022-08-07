@@ -71,7 +71,6 @@ export const api = new Api({
     
 } 
 function newAvatarEdit ({popupLinkAvatar}) { // обновление аватара
-    console.log(popupLinkAvatar);
     api.setUserAvatar(popupLinkAvatar).then((result) => {
       userInfo.setUserInfo(result); // добавляем результат запроса на страницу
       popupNewAvatar.close();
